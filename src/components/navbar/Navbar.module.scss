@@ -1,10 +1,12 @@
+@import "../../../styles/color.module.scss";
+@import "../../../styles/common.module.scss";
+
 .container {
   box-sizing: border-box;
   position: fixed;
   top: 0;
   width: 100vw;
-  display: flex;
-  justify-content: center;
+  @extend .flexHorCenter;
   background: transparent;
   backdrop-filter: blur(20px);
   user-select: none;
@@ -12,17 +14,15 @@
   .mainList {
     box-sizing: border-box;
     list-style: none;
-    display: flex;
+    @extend .flexSpaceBtw;
     font-size: 1.5rem;
-    justify-content: space-between;
     gap: 0 2rem;
 
     li {
       box-sizing: border-box;
-      display: flex;
-      align-items: center;
+      @extend .flexVerCenter;
       gap: 15px;
-      color: #333;
+      color: $textblack;
       padding: 1rem;
       border: 1px solid transparent;
       cursor: pointer;
@@ -33,11 +33,11 @@
     }
 
     li:hover {
-      color: #0c41ff;
-      border-bottom: 1px solid #0c41ff;
+      color: $primaryblue;
+      border-bottom: 1px solid $primaryblue;
 
       svg {
-        fill: #0c41ff;
+        fill: $primaryblue;
         transform: rotate(0deg);
       }
     }
@@ -51,33 +51,27 @@
       position: absolute;
       top: 100%;
       left: 0;
-      background: #059862;
+      background: $primarygreen;
       border-radius: 0 0 10px 10px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      @extend .flexColCenter;
       text-align: center;
       width: 0;
-      // width: 100%;
-      // height: 220px;
       height: 0;
-      // padding: 1rem;
       padding: 0;
       opacity: 0;
-      box-shadow: 0 0 20px 4px rgba(85, 85, 85, 0.787);
+      box-shadow: 0 0 20px 4px $boxshadow;
       transition: all 0.3s;
 
       li {
-        color: #fff;
+        color: $white;
       }
 
       li:hover {
         border: none;
         transform: scale(1.1);
         border-radius: 5px;
-        background: dodgerblue;
-        color: #fff;
+        background: $blue;
+        color: $white;
       }
     }
   }
