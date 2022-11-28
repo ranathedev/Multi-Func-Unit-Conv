@@ -17,8 +17,43 @@
     text-align: center;
   }
 
-  ul {
-    list-style: none;
+  .select {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .input_value,
+  .output_value {
+    position: relative;
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .dropDownBtn {
+    all: unset;
+    margin: 2rem 0;
+    width: 90%;
+    padding: 10px 1rem;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    text-align: center;
+    background: $white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1;
+    cursor: pointer;
+
+    &:hover {
+      color: $blue;
+
+      svg {
+        fill: $blue;
+      }
+    }
   }
 
   .dataContain {
@@ -27,12 +62,49 @@
     flex-direction: row;
   }
 
-  .output_value,
-  .input_value {
-    width: 45%;
+  .dropDown_input,
+  .dropDown_output {
+    position: absolute;
+    top: 11%;
+    list-style: none;
+    padding: 10px 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 5px;
+    box-shadow: 0 0 20px 8px $boxshadow;
+    background: $white;
+    display: none;
+    width: 100%;
+    z-index: 5;
+    cursor: pointer;
+    height: 250px;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    li {
+      font-size: 1.1rem;
+      font-weight: bold;
+      padding: 15px 0;
+      color: $textblack;
+      border-bottom: 1px solid transparent;
+      width: 90%;
+      text-align: center;
+      display: flex;
+      justify-content: space-between;
+
+      span {
+        font-weight: normal;
+      }
+    }
+
+    li:hover {
+      color: $primaryblue;
+      border-bottom: 1px solid $primaryblue;
+    }
   }
 
   input {
@@ -43,7 +115,7 @@
     padding: 8px 15px;
     border-bottom: 2px solid $primaryblue;
     color: $textblack;
-    font-size: 1.3vw;
+    font-size: 1.5rem;
     font-weight: bold;
     text-align: center;
 
@@ -84,7 +156,7 @@
     align-items: center;
     justify-content: center;
     color: $white;
-    font-size: 1.3vw;
+    font-size: 1.5rem;
     font-weight: bold;
   }
 
@@ -100,6 +172,8 @@
       border-radius: 5px;
       background-color: transparent;
       color: $white;
+      font-weight: bold;
+      cursor: pointer;
 
       &:hover {
         background: $white;
