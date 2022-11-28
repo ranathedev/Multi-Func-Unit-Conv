@@ -1,5 +1,29 @@
-.Homepage {
-  h1 {
-    color: red;
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+
+.container {
+  height: 100vh;
+  width: 100vw;
+  background-image: radial-gradient(
+    circle farthest-corner at 10% 20%,
+    rgba(171, 102, 255, 1) 0%,
+    rgba(116, 182, 247, 1) 90%
+  );
+  font-family: "Anton", sans-serif;
+  font-size: 3vw;
+  color: #fff;
+  letter-spacing: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h1,
+  h4 {
+    margin: 0;
+  }
+
+  h4 {
+    color: black;
+    letter-spacing: 5px;
   }
 }
