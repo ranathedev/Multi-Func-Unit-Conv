@@ -2,8 +2,9 @@ import stl from "./Homepage.module.scss";
 
 const Homepage = () => {
   return (
-    <div className={stl.Homepage}>
-      <h1>HomePage</h1>
+    <div className={stl.container}>
+      <h1>Unit Converter</h1>
+      <h4>Simple Multi Function</h4>
     </div>
   );
 };
