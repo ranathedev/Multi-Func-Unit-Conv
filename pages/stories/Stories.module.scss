@@ -1,7 +1,7 @@
+@import "../../styles/common.module.scss";
+
 .wrapper {
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
+  @extend .flexColStart;
   padding: 1rem 1.5rem;
   gap: 10px;
 }
