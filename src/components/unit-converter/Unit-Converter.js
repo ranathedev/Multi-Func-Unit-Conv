@@ -1,35 +1,75 @@
-import { useEffect } from "react";
+import { useState } from "react";
 import DropdownIcon from "../../assets/dropdown-arr.svg";
 
 import stl from "./Unit-Converter.module.scss";
 
-const UnitConverter = () => {
+const UnitConverter = ({ type, units }) => {
+  const [inputValue, setInputValue] = useState("Select...");
+  const [outputValue, setOutputValue] = useState("Select...");
+
+  const openDropDownInput = () => {
+    const dropMenu = document.getElementById("dropDownInput");
+    dropMenu.style.display = "flex";
+  };
+
+  const openDropDownOutput = () => {
+    const dropMenu = document.getElementById("dropDownOutput");
+    dropMenu.style.display = "flex";
+  };
+
+  const closeDropDownInput = () => {
+    const dropMenu = document.getElementById("dropDownInput");
+    dropMenu.style.display = "none";
+  };
+  const closeDropDownOutput = () => {
+    const dropMenu = document.getElementById("dropDownOutput");
+    dropMenu.style.display = "none";
+  };
+
   return (
     <div className={stl.container}>
-      <h1>Unit Converter</h1>
+      <h1>{type}</h1>
       <div className={stl.dataContain}>
         <div className={stl.input_value}>
           <div className={stl.select}>
-            <button>Open DropDown</button>
-            <ul>
-              <li>example1</li>
-              <li>example2</li>
-              <li>example3</li>
-              <li>example4</li>
-              <li>example5</li>
+            <button onClick={openDropDownInput} className={stl.dropDownBtn}>
+              {inputValue} <DropdownIcon />
+            </button>
+            <ul id="dropDownInput" className={stl.dropDown_input}>
+              {units.map((unit) => {
+                return (
+                  <li
+                    onClick={() => {
+                      closeDropDownInput();
+                      setInputValue(unit.name);
+                    }}
+                  >
+                    {unit.name} <span>({unit.symbol})</span>
+                  </li>
+                );
+              })}
             </ul>
           </div>
           <input type="number" placeholder="Enter value to Convert..." />
         </div>
         <div className={stl.output_value}>
           <div className={stl.select}>
-            <button>Open DropDown</button>
-            <ul>
-              <li>example1</li>
-              <li>example2</li>
-              <li>example3</li>
-              <li>example4</li>
-              <li>example5</li>
+            <button onClick={openDropDownOutput} className={stl.dropDownBtn}>
+              {outputValue} <DropdownIcon />
+            </button>
+            <ul id="dropDownOutput" className={stl.dropDown_output}>
+              {units.map((unit) => {
+                return (
+                  <li
+                    onClick={() => {
+                      closeDropDownOutput();
+                      setOutputValue(unit.name);
+                    }}
+                  >
+                    {unit.name} <span>({unit.symbol})</span>
+                  </li>
+                );
+              })}
             </ul>
           </div>
           <span className={stl.output}>0</span>
