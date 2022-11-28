@@ -7,6 +7,7 @@ const StoriesLinks = () => (
     <h3>Stories of Components</h3>
     <Link href="/stories/homepage">HomePage</Link>
     <Link href="/stories/navbar">Navbar</Link>
+    <Link href="/stories/unit-converter">UnitConverter</Link>
   </div>
 );
 
