@@ -6,6 +6,7 @@ import stl from "./Unit-Converter.module.scss";
 const UnitConverter = ({ type, units }) => {
   const [inputValue, setInputValue] = useState("Select...");
   const [outputValue, setOutputValue] = useState("Select...");
+  const [value, setValue] = useState(1);
 
   const openDropDownInput = () => {
     const dropMenu = document.getElementById("dropDownInput");
@@ -26,6 +27,10 @@ const UnitConverter = ({ type, units }) => {
     dropMenu.style.display = "none";
   };
 
+  const removePlaceholder = (e) => {
+    e.target.placeholder = "";
+  };
+
   return (
     <div className={stl.container}>
       <h1>{type}</h1>
@@ -36,9 +41,10 @@ const UnitConverter = ({ type, units }) => {
               {inputValue} <DropdownIcon />
             </button>
             <ul id="dropDownInput" className={stl.dropDown_input}>
-              {units.map((unit) => {
+              {units.map((unit, i) => {
                 return (
                   <li
+                    key={i}
                     onClick={() => {
                       closeDropDownInput();
                       setInputValue(unit.name);
@@ -50,7 +56,12 @@ const UnitConverter = ({ type, units }) => {
               })}
             </ul>
           </div>
-          <input type="number" placeholder="Enter value to Convert..." />
+          <input
+            type="number"
+            placeholder="Enter value to Convert..."
+            onChange={(e) => setValue(e.target.value)}
+            onFocus={(e) => removePlaceholder(e)}
+          />
         </div>
         <div className={stl.output_value}>
           <div className={stl.select}>
@@ -58,9 +69,10 @@ const UnitConverter = ({ type, units }) => {
               {outputValue} <DropdownIcon />
             </button>
             <ul id="dropDownOutput" className={stl.dropDown_output}>
-              {units.map((unit) => {
+              {units.map((unit, i) => {
                 return (
                   <li
+                    key={i}
                     onClick={() => {
                       closeDropDownOutput();
                       setOutputValue(unit.name);
