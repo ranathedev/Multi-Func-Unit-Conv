@@ -2,13 +2,11 @@ const unitConvData = [
   {
     type: "acceleration",
     data: [
-      [
-        { symbol: "g-force", name: "Gravitational Accleration" },
-        {
-          symbol: "m/s2",
-          name: "Meter/sec2",
-        },
-      ],
+      { symbol: "g-force", name: "Gravitational Accleration" },
+      {
+        symbol: "m/s2",
+        name: "Meter/sec2",
+      },
     ],
   },
   {
