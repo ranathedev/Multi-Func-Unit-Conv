@@ -1,9 +1,10 @@
 import { useState } from "react";
+
 import DropdownIcon from "../../assets/dropdown-arr.svg";
 
 import stl from "./Unit-Converter.module.scss";
 
-const UnitConverter = ({ type, units }) => {
+const UnitConverter = ({ type, data }) => {
   const [inputValue, setInputValue] = useState("Select...");
   const [outputValue, setOutputValue] = useState("Select...");
   const [value, setValue] = useState(1);
@@ -41,7 +42,7 @@ const UnitConverter = ({ type, units }) => {
               {inputValue} <DropdownIcon />
             </button>
             <ul id="dropDownInput" className={stl.dropDown_input}>
-              {units.map((unit, i) => {
+              {data.map((unit, i) => {
                 return (
                   <li
                     key={i}
@@ -69,7 +70,7 @@ const UnitConverter = ({ type, units }) => {
               {outputValue} <DropdownIcon />
             </button>
             <ul id="dropDownOutput" className={stl.dropDown_output}>
-              {units.map((unit, i) => {
+              {data.map((unit, i) => {
                 return (
                   <li
                     key={i}
