@@ -1,5 +1,12 @@
 @import "../../../styles/color.module.scss";
 
+.test {
+  ul {
+    list-style: none;
+    cursor: pointer;
+  }
+}
+
 .container {
   box-sizing: border-box;
   width: 60%;
