@@ -1,21 +1,34 @@
-import { useEffect, useState } from "react";
+import { useState, useRef, useEffect } from "react";
+import useClickOnOutside from "../../lib/hooks";
+
+import ArrowIcon from "../../assets/navigate_next_FILL0_wght400_GRAD0_opsz24.svg";
+
 import stl from "./Sidebar.module.scss";
 
 const Sidebar = ({ list, customClass }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [id, setId] = useState();
+  const ref = useRef();
+
+  useEffect(() => {
+    const id = localStorage.getItem("id");
+    setId(id);
+  }, []);
 
   const openList = (id) => {
     const list = document.getElementById(id);
-    if (!isOpen) {
-      list.style.width = "100%";
-      list.classList.add(stl.expand);
-      setIsOpen(true);
-    } else if (isOpen) {
+    list.style.width = "100%";
+    list.style.opacity = "1";
+  };
+  const closeList = () => {
+    const id = localStorage.getItem("id");
+    if (typeof window !== "undefined") {
+      const list = document.getElementById(id || 0);
       list.style.width = "0";
-      list.classList.remove(stl.expand);
-      setIsOpen(false);
+      list.style.opacity = "0";
     }
   };
+
+  useClickOnOutside(closeList, ref);
 
   return (
     <div className={stl.container}>
@@ -24,15 +37,17 @@ const Sidebar = ({ list, customClass }) => {
         <ul className={stl.mainList} id="mainList">
           {list.map((option, index) => {
             return (
-              <li
-                key={index}
-                onClick={() => {
-                  console.log(index);
-                  openList(index);
-                }}
-              >
-                {option.name}
-                <ul id={index} className={stl.childList}>
+              <li key={index}>
+                <p
+                  onClick={() => {
+                    console.log(index);
+                    openList(index);
+                    localStorage.setItem("id", index);
+                  }}
+                >
+                  {option.name} {<ArrowIcon />}
+                </p>
+                <ul ref={ref} id={index} className={stl.childList}>
                   {option.list.map((opt, i) => {
                     return (
                       <li
@@ -41,7 +56,7 @@ const Sidebar = ({ list, customClass }) => {
                         id={opt.id}
                         onClick={() => {
                           console.log(index);
-                          openList(index);
+                          closeList();
                         }}
                       >
                         {opt.name}
