@@ -1,20 +1,17 @@
 import { useEffect, useState, useRef } from "react";
+import axios from "axios";
 
-import convert from "../convert/Convert";
+import LoadingScreen from "../loaingScreen/Loading";
 import useClickOnOutside from "../../lib/hooks";
 
 import DropdownIcon from "../../assets/dropdown-arr.svg";
 
 import stl from "./Unit-Converter.module.scss";
 
-let result;
-
-export const getRes = (res) => {
-  result = res;
-};
-
 const UnitConverter = ({ type, data, customClass }) => {
   // const [ConvType, setConvType] = useState(type);
+  const [res, setRes] = useState("");
+  const [isLoading, setIsLoading] = useState("");
   const [inputValue, setInputValue] = useState("Select...");
   const [outputValue, setOutputValue] = useState("Select...");
   const [value, setValue] = useState(1);
@@ -24,14 +21,31 @@ const UnitConverter = ({ type, data, customClass }) => {
   //   setOutputValue("Select...");
   // }, [ConvType]);
 
-  console.log(result);
-
   const inputValueRef = useRef();
   const outputValueRef = useRef();
 
-  const runConvert = async () => {
-    const val = await convert(value, inputValue, outputValue, type);
-    console.log(val);
+  const config = {
+    headers: {
+      Authorization: "Bearer 373|5muD1RjjZDqrhmJk628CK0b17ky0K6SlMFnAYxkX",
+    },
+  };
+
+  const convert = (value, inputVal, outputVal, type) => {
+    axios
+      .get(
+        `https://zylalabs.com/api/189/measurement+unit+conversion+api/202/unit+converter?value=${value}&from=${inputVal}&to=${outputVal}&measure=${type}`,
+        config
+      )
+      .then(function (response) {
+        const data = response.data.value;
+        console.log(data);
+        setRes(data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+    setIsLoading(false);
   };
 
   const openDropDownInput = () => {
@@ -47,12 +61,10 @@ const UnitConverter = ({ type, data, customClass }) => {
   const closeDropDownInput = () => {
     const dropMenu = document.getElementById("dropDownInput");
     dropMenu.style.display = "none";
-    console.log(result);
   };
   const closeDropDownOutput = () => {
     const dropMenu = document.getElementById("dropDownOutput");
     dropMenu.style.display = "none";
-    console.log(result);
   };
 
   const removePlaceholder = (e) => {
@@ -250,80 +262,85 @@ const UnitConverter = ({ type, data, customClass }) => {
           </li>
         </ul>
       </div> */}
-      <div className={stl.container}>
-        <h1>{type}</h1>
-        <div className={stl.dataContain}>
-          <div className={stl.input_value}>
-            <div className={stl.select}>
-              <button onClick={openDropDownInput} className={stl.dropDownBtn}>
-                {inputValue} <DropdownIcon />
-              </button>
-              <ul
-                ref={inputValueRef}
-                id="dropDownInput"
-                className={stl.dropDown_input}
-              >
-                {data.map((unit, i) => {
-                  return (
-                    <li
-                      key={i}
-                      onClick={() => {
-                        closeDropDownInput();
-                        setInputValue(unit.symbol);
-                      }}
-                    >
-                      {unit.name} <span>({unit.symbol})</span>
-                    </li>
-                  );
-                })}
-              </ul>
+      {(isLoading && <LoadingScreen />) || (
+        <div className={stl.container}>
+          <h1>{type}</h1>
+          <div className={stl.dataContain}>
+            <div className={stl.input_value}>
+              <div className={stl.select}>
+                <button onClick={openDropDownInput} className={stl.dropDownBtn}>
+                  {inputValue} <DropdownIcon />
+                </button>
+                <ul
+                  ref={inputValueRef}
+                  id="dropDownInput"
+                  className={stl.dropDown_input}
+                >
+                  {data.map((unit, i) => {
+                    return (
+                      <li
+                        key={i}
+                        onClick={() => {
+                          closeDropDownInput();
+                          setInputValue(unit.symbol);
+                        }}
+                      >
+                        {unit.name} <span>({unit.symbol})</span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+              <input
+                type="number"
+                placeholder="Enter value to Convert..."
+                onChange={(e) => setValue(e.target.value)}
+                onFocus={(e) => removePlaceholder(e)}
+              />
             </div>
-            <input
-              type="number"
-              placeholder="Enter value to Convert..."
-              onChange={(e) => setValue(e.target.value)}
-              onFocus={(e) => removePlaceholder(e)}
-            />
+            <div className={stl.output_value}>
+              <div className={stl.select}>
+                <button
+                  onClick={openDropDownOutput}
+                  className={stl.dropDownBtn}
+                >
+                  {outputValue} <DropdownIcon />
+                </button>
+                <ul
+                  ref={outputValueRef}
+                  id="dropDownOutput"
+                  className={stl.dropDown_output}
+                >
+                  {data.map((unit, i) => {
+                    return (
+                      <li
+                        key={i}
+                        onClick={() => {
+                          closeDropDownOutput();
+                          setOutputValue(unit.symbol);
+                        }}
+                      >
+                        {unit.name} <span>({unit.symbol})</span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+              <span className={stl.output}>{res}</span>
+            </div>
           </div>
-          <div className={stl.output_value}>
-            <div className={stl.select}>
-              <button onClick={openDropDownOutput} className={stl.dropDownBtn}>
-                {outputValue} <DropdownIcon />
-              </button>
-              <ul
-                ref={outputValueRef}
-                id="dropDownOutput"
-                className={stl.dropDown_output}
-              >
-                {data.map((unit, i) => {
-                  return (
-                    <li
-                      key={i}
-                      onClick={() => {
-                        closeDropDownOutput();
-                        setOutputValue(unit.symbol);
-                      }}
-                    >
-                      {unit.name} <span>({unit.symbol})</span>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-            <span className={stl.output}>{result}</span>
+          <div className={stl.Btn}>
+            <button
+              onClick={() => {
+                convert(value, inputValue, outputValue, type);
+              }}
+              className={stl.convBtn}
+            >
+              Convert
+            </button>
           </div>
         </div>
-        <div className={stl.Btn}>
-          <button
-            onClick={() => {
-              runConvert();
-            }}
-            className={stl.convBtn}
-          >
-            Convert
-          </button>
-        </div>
-      </div>
+      )}
     </>
   );
 };
