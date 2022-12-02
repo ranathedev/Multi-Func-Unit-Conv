@@ -6,7 +6,7 @@ import DropdownIcon from "../../assets/dropdown-arr.svg";
 
 import stl from "./Unit-Converter.module.scss";
 
-const UnitConverter = ({ type, data }) => {
+const UnitConverter = ({ type, data, customClass }) => {
   // const [ConvType, setConvType] = useState(type);
   const [inputValue, setInputValue] = useState("Select...");
   const [outputValue, setOutputValue] = useState("Select...");
