@@ -1,17 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import stl from "./Sidebar.module.scss";
 
 const Sidebar = ({ list, customClass }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
   const openList = (id) => {
     const list = document.getElementById(id);
-    list.style.width = "100%";
-    list.classList.add(stl.expand);
-  };
-
-  const closeList = (id) => {
-    const list = document.getElementById(id);
-    list.style.width = "0";
-    list.classList.remove(stl.expand);
+    if (!isOpen) {
+      list.style.width = "100%";
+      list.classList.add(stl.expand);
+      setIsOpen(true);
+    } else if (isOpen) {
+      list.style.width = "0";
+      list.classList.remove(stl.expand);
+      setIsOpen(false);
+    }
   };
 
   return (
@@ -24,7 +27,7 @@ const Sidebar = ({ list, customClass }) => {
               <li
                 key={index}
                 onClick={() => {
-                  console.log("index");
+                  console.log(index);
                   openList(index);
                 }}
               >
@@ -38,7 +41,7 @@ const Sidebar = ({ list, customClass }) => {
                         id={opt.id}
                         onClick={() => {
                           console.log(index);
-                          closeList(index);
+                          openList(index);
                         }}
                       >
                         {opt.name}
