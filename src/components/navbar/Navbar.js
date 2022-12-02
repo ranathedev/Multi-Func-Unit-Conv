@@ -5,7 +5,7 @@ import useClickOnOutside from "../../lib/hooks";
 
 import stl from "./Navbar.module.scss";
 
-const Navbar = ({ list1, list2, customClass }) => {
+const Navbar = ({ baseList, mostUsedList, customClass }) => {
   const [isOpenCommon, setIsOpenCommon] = useState(true);
   const [isOpenEngineer, setIsOpenEngineer] = useState(true);
 
@@ -29,18 +29,18 @@ const Navbar = ({ list1, list2, customClass }) => {
     console.log("Engineer-List-false");
   };
 
-  const common_ref = useRef();
-  const engineer_ref = useRef();
+  const base = useRef();
+  const mostUsed = useRef();
 
-  useClickOnOutside(close1, common_ref);
-  useClickOnOutside(close2, engineer_ref);
+  useClickOnOutside(close1, base);
+  useClickOnOutside(close2, mostUsed);
 
   return (
     <div className={stl.container}>
       <ul className={stl.mainList}>
         <li>Home</li>
         <li
-          ref={common_ref}
+          ref={base}
           id="common_conv"
           className={stl.common_conv}
           onClick={() => {
@@ -49,7 +49,7 @@ const Navbar = ({ list1, list2, customClass }) => {
               const drp1 = document.getElementById("drpdwn1");
               drp1.style.width = "100%";
               drp1.style.padding = "1rem";
-              drp1.style.height = "220px";
+              drp1.style.height = "275px";
               drp1.style.opacity = "1";
               console.log("Common-List-true");
             } else if (!isOpenCommon) {
@@ -57,15 +57,15 @@ const Navbar = ({ list1, list2, customClass }) => {
             }
           }}
         >
-          Common Converters <DropdownArr />
-          <ul ref={common_ref} id="drpdwn1" className={stl.drownDown}>
-            {list1.map((option) => {
+          Base Converters <DropdownArr />
+          <ul ref={base} id="drpdwn1" className={stl.drownDown}>
+            {baseList.map((option) => {
               return <li>{option}</li>;
             })}
           </ul>
         </li>
         <li
-          ref={engineer_ref}
+          ref={mostUsed}
           id="engineer_conv"
           className={stl.engineer_conv}
           onClick={() => {
@@ -74,7 +74,7 @@ const Navbar = ({ list1, list2, customClass }) => {
               const drp2 = document.getElementById("drpdwn2");
               drp2.style.width = "100%";
               drp2.style.padding = "1rem";
-              drp2.style.height = "220px";
+              drp2.style.height = "400px";
               drp2.style.opacity = "1";
               console.log("Engineer-List-true");
             } else if (!isOpenEngineer) {
@@ -82,9 +82,9 @@ const Navbar = ({ list1, list2, customClass }) => {
             }
           }}
         >
-          Engineer Converters <DropdownArr />
-          <ul ref={engineer_ref} id="drpdwn2" className={stl.drownDown}>
-            {list2.map((option) => {
+          Most Used Converters <DropdownArr />
+          <ul ref={mostUsed} id="drpdwn2" className={stl.drownDown}>
+            {mostUsedList.map((option) => {
               return <li>{option}</li>;
             })}
           </ul>
