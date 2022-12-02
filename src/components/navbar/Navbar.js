@@ -5,7 +5,7 @@ import useClickOnOutside from "../../lib/hooks";
 
 import stl from "./Navbar.module.scss";
 
-const Navbar = () => {
+const Navbar = ({ list1, list2, customClass }) => {
   const [isOpenCommon, setIsOpenCommon] = useState(true);
   const [isOpenEngineer, setIsOpenEngineer] = useState(true);
 
@@ -59,9 +59,9 @@ const Navbar = () => {
         >
           Common Converters <DropdownArr />
           <ul ref={common_ref} id="drpdwn1" className={stl.drownDown}>
-            <li>example</li>
-            <li>example</li>
-            <li>example</li>
+            {list1.map((option) => {
+              return <li>{option}</li>;
+            })}
           </ul>
         </li>
         <li
@@ -84,9 +84,9 @@ const Navbar = () => {
         >
           Engineer Converters <DropdownArr />
           <ul ref={engineer_ref} id="drpdwn2" className={stl.drownDown}>
-            <li>example</li>
-            <li>example</li>
-            <li>example</li>
+            {list2.map((option) => {
+              return <li>{option}</li>;
+            })}
           </ul>
         </li>
         <li>About</li>
