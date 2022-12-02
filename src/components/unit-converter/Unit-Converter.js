@@ -1,10 +1,17 @@
 import { useEffect, useState, useRef } from "react";
 
+import convert from "../convert/Convert";
 import useClickOnOutside from "../../lib/hooks";
 
 import DropdownIcon from "../../assets/dropdown-arr.svg";
 
 import stl from "./Unit-Converter.module.scss";
+
+let result;
+
+export const getRes = (res) => {
+  result = res;
+};
 
 const UnitConverter = ({ type, data, customClass }) => {
   // const [ConvType, setConvType] = useState(type);
@@ -17,8 +24,15 @@ const UnitConverter = ({ type, data, customClass }) => {
   //   setOutputValue("Select...");
   // }, [ConvType]);
 
+  console.log(result);
+
   const inputValueRef = useRef();
   const outputValueRef = useRef();
+
+  const runConvert = async () => {
+    const val = await convert(value, inputValue, outputValue, type);
+    console.log(val);
+  };
 
   const openDropDownInput = () => {
     const dropMenu = document.getElementById("dropDownInput");
@@ -33,10 +47,12 @@ const UnitConverter = ({ type, data, customClass }) => {
   const closeDropDownInput = () => {
     const dropMenu = document.getElementById("dropDownInput");
     dropMenu.style.display = "none";
+    console.log(result);
   };
   const closeDropDownOutput = () => {
     const dropMenu = document.getElementById("dropDownOutput");
     dropMenu.style.display = "none";
+    console.log(result);
   };
 
   const removePlaceholder = (e) => {
@@ -253,7 +269,7 @@ const UnitConverter = ({ type, data, customClass }) => {
                       key={i}
                       onClick={() => {
                         closeDropDownInput();
-                        setInputValue(unit.name);
+                        setInputValue(unit.symbol);
                       }}
                     >
                       {unit.name} <span>({unit.symbol})</span>
@@ -285,7 +301,7 @@ const UnitConverter = ({ type, data, customClass }) => {
                       key={i}
                       onClick={() => {
                         closeDropDownOutput();
-                        setOutputValue(unit.name);
+                        setOutputValue(unit.symbol);
                       }}
                     >
                       {unit.name} <span>({unit.symbol})</span>
@@ -294,11 +310,18 @@ const UnitConverter = ({ type, data, customClass }) => {
                 })}
               </ul>
             </div>
-            <span className={stl.output}>0</span>
+            <span className={stl.output}>{result}</span>
           </div>
         </div>
         <div className={stl.Btn}>
-          <button className={stl.convBtn}>Convert</button>
+          <button
+            onClick={() => {
+              runConvert();
+            }}
+            className={stl.convBtn}
+          >
+            Convert
+          </button>
         </div>
       </div>
     </>

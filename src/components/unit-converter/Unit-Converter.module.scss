@@ -12,6 +12,7 @@
   height: max-content;
   background: linear-gradient(-45deg, $primaryblue, magenta);
   border-radius: 25px;
+  width: 60%;
   padding: 1rem 2rem;
   display: flex;
   flex-direction: column;
@@ -200,6 +201,7 @@
 
 @media screen and (max-width: 800px) {
   .container {
+    width: max-content;
     padding: 0;
   }
 }
