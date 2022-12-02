@@ -3,8 +3,8 @@ import Navbar from "../../src/components/navbar";
 
 const navbar = {
   arg: "Navbar",
-  list1: ["example", "example", "example"],
-  list2: ["example", "example", "example"],
+  baseList: ["Length", "Mass", "Temperature", "Time"],
+  mostUsedList: ["Area", "Force", "Energy", "Power", "Speed", "Volume"],
 };
 
 const NavbarStory = () => (
