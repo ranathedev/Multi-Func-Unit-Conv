@@ -31,19 +31,34 @@
     .mainList {
       list-style: none;
       color: $white;
-      width: 50%;
+      width: 100%;
+      user-select: none;
 
       &::-webkit-scrollbar {
         display: none;
       }
 
       li {
-        font-size: 1.5rem;
-        padding: 0.8rem 0.5rem;
-        margin-right: 5%;
+        p {
+          font-size: 1.5rem;
+          padding: 0.5rem 0.5rem;
+          margin-right: 5%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          cursor: pointer;
 
-        &::-webkit-scrollbar {
-          display: none;
+          &::-webkit-scrollbar {
+            display: none;
+          }
+
+          svg {
+            fill: $white;
+          }
+
+          &:hover {
+            border-bottom: 1px solid $white;
+          }
         }
       }
     }
@@ -56,29 +71,29 @@
     top: 5%;
     right: 0;
     height: 75vh;
+    opacity: 0;
     width: 0;
     border-radius: 80px 0 0 0;
     background: linear-gradient(-45deg, $black, $black1);
-    transition: all 0.3s;
     z-index: 5;
+    user-select: none;
+    transition: all 0.5s;
+    transition-timing-function: ease-out;
 
     &::-webkit-scrollbar {
       display: none;
     }
 
     li {
-      padding: 0;
+      font-size: 1.5rem;
       color: $white;
+      padding: 0.8rem 0.5rem;
+      margin-left: 2rem;
+      cursor: pointer;
 
       &:nth-child(1) {
         margin-top: 5%;
       }
     }
-  }
-}
-
-.expand {
-  li {
-    margin-left: 2rem;
   }
 }
