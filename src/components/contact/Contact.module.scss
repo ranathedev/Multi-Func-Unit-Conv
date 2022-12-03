@@ -88,37 +88,40 @@
 
     .followBtn {
       width: 300px;
-      height: 60px;
       background: linear-gradient(90deg, $blue1, $primaryblue);
       border-radius: 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-evenly;
       padding: 0 0 0 10px;
       cursor: pointer;
       transform: all 0.5s;
 
-      span {
-        width: 70%;
-        color: $white;
-        font-size: 1.3rem;
-        font-weight: bold;
-        text-align: center;
-      }
-
-      .iconContainer {
+      a {
+        all: unset;
         display: flex;
-        justify-content: center;
         align-items: center;
-        width: 50px;
-        height: 45px;
-        border-left: 2px solid $white;
+        justify-content: space-evenly;
+        height: 60px;
 
-        svg {
-          fill: $white;
+        span {
+          width: 70%;
+          color: $white;
+          font-size: 1.3rem;
+          font-weight: bold;
+          text-align: center;
+        }
+
+        .iconContainer {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 50px;
+          height: 45px;
+          border-left: 2px solid $white;
+
+          svg {
+            fill: $white;
+          }
         }
       }
-
       &:hover {
         transform: scale(1.05);
       }
