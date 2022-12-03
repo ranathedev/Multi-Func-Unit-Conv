@@ -36,22 +36,28 @@ const Contact = () => {
           <h1>More ways to connect</h1>
         </div>
         <div className={stl.followBtn}>
-          <span>Write us an email</span>
-          <div className={stl.iconContainer}>
-            <MailIcon />
-          </div>
+          <a href="http://www.facebook.com" target="_blank">
+            <span>Write us an email</span>
+            <div className={stl.iconContainer}>
+              <MailIcon />
+            </div>
+          </a>
         </div>
         <div className={stl.followBtn}>
-          <span>Connect us on</span>
-          <div className={stl.iconContainer}>
-            <FacebookIcon />
-          </div>
+          <a href="http://www.facebook.com" target="_blank">
+            <span>Connect us on</span>
+            <div className={stl.iconContainer}>
+              <FacebookIcon />
+            </div>
+          </a>
         </div>
         <div className={stl.followBtn}>
-          <span>Follow us on</span>
-          <div className={stl.iconContainer}>
-            <TwitterIcon />
-          </div>
+          <a href="http://www.facebook.com" target="_blank">
+            <span>Follow us on</span>
+            <div className={stl.iconContainer}>
+              <TwitterIcon />
+            </div>
+          </a>
         </div>
       </div>
     </div>
