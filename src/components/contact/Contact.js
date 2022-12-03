@@ -44,7 +44,10 @@ const Contact = () => {
           </a>
         </div>
         <div className={stl.followBtn}>
-          <a href="http://www.facebook.com" target="_blank">
+          <a
+            href="https://www.facebook.com/profile.php?id=100088339993655"
+            target="_blank"
+          >
             <span>Connect us on</span>
             <div className={stl.iconContainer}>
               <FacebookIcon />
@@ -52,7 +55,7 @@ const Contact = () => {
           </a>
         </div>
         <div className={stl.followBtn}>
-          <a href="http://www.facebook.com" target="_blank">
+          <a href="http://www.twitter.com" target="_blank">
             <span>Follow us on</span>
             <div className={stl.iconContainer}>
               <TwitterIcon />
