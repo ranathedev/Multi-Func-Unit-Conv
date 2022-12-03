@@ -36,22 +36,31 @@ const Contact = () => {
           <h1>More ways to connect</h1>
         </div>
         <div className={stl.followBtn}>
-          <span>Write us an email</span>
-          <div className={stl.iconContainer}>
-            <MailIcon />
-          </div>
+          <a href="mailto:intizaralirana2@gmail.com" target="_blank">
+            <span>Write us an email</span>
+            <div className={stl.iconContainer}>
+              <MailIcon />
+            </div>
+          </a>
         </div>
         <div className={stl.followBtn}>
-          <span>Connect us on</span>
-          <div className={stl.iconContainer}>
-            <FacebookIcon />
-          </div>
+          <a
+            href="https://www.facebook.com/profile.php?id=100088339993655"
+            target="_blank"
+          >
+            <span>Connect us on</span>
+            <div className={stl.iconContainer}>
+              <FacebookIcon />
+            </div>
+          </a>
         </div>
         <div className={stl.followBtn}>
-          <span>Follow us on</span>
-          <div className={stl.iconContainer}>
-            <TwitterIcon />
-          </div>
+          <a href="https://twitter.com/intizar47426" target="_blank">
+            <span>Follow us on</span>
+            <div className={stl.iconContainer}>
+              <TwitterIcon />
+            </div>
+          </a>
         </div>
       </div>
     </div>
