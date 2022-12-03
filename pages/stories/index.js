@@ -9,6 +9,7 @@ const StoriesLinks = () => (
     <Link href="/stories/navbar">Navbar</Link>
     <Link href="/stories/unit-converter">UnitConverter</Link>
     <Link href="/stories/sidebar">Sidebar</Link>
+    <Link href="/stories/contact">Contact</Link>
   </div>
 );
 
