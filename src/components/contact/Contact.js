@@ -52,7 +52,7 @@ const Contact = () => {
           </a>
         </div>
         <div className={stl.followBtn}>
-          <a href="http://www.twitter.com" target="_blank">
+          <a href="http://www.facebook.com" target="_blank">
             <span>Follow us on</span>
             <div className={stl.iconContainer}>
               <TwitterIcon />
