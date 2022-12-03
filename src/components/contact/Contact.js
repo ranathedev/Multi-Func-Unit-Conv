@@ -36,7 +36,7 @@ const Contact = () => {
           <h1>More ways to connect</h1>
         </div>
         <div className={stl.followBtn}>
-          <a href="http://www.facebook.com" target="_blank">
+          <a href="mailto:intizaralirana2@gmail.com" target="_blank">
             <span>Write us an email</span>
             <div className={stl.iconContainer}>
               <MailIcon />
@@ -55,7 +55,7 @@ const Contact = () => {
           </a>
         </div>
         <div className={stl.followBtn}>
-          <a href="http://www.twitter.com" target="_blank">
+          <a href="https://twitter.com/intizar47426" target="_blank">
             <span>Follow us on</span>
             <div className={stl.iconContainer}>
               <TwitterIcon />
