@@ -1,5 +1,5 @@
 import Stories from "../../src/components/stories";
-import Contact from "../../src/components/contact/Contact";
+import Contact from "../../src/components/contact";
 
 const contact = {
   arg: "Contact",
