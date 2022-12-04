@@ -8,7 +8,7 @@ import EmailIcon from "../../assets/mail-footer.svg";
 
 import stl from "./Footer.module.scss";
 
-const Footer = () => {
+const Footer = ({ customClass }) => {
   const { width } = useWindowDimensions();
 
   let flag = true;
@@ -41,8 +41,8 @@ const Footer = () => {
       </div>
       <div className={stl.row2}>
         <div className={stl.left}>
-          <h3>Privacy</h3>
-          <h3>Policy</h3>
+          <h3>Privacy & Policy</h3>
+          <h3>Terms & Conditions</h3>
         </div>
         <div className={stl.right}>
           <h3>Home</h3>
