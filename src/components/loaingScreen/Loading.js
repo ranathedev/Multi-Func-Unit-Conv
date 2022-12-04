@@ -2,9 +2,9 @@ import clsx from "clsx";
 
 import stl from "./Loading.module.scss";
 
-const LoadingScreen = () => {
+const LoadingScreen = ({ customClass }) => {
   return (
-    <div className={stl.screen}>
+    <div className={clsx(stl.screen, customClass)}>
       <div className={stl.balls}>
         <div className={clsx(stl.ball, stl.one)}></div>
         <div className={clsx(stl.ball, stl.two)}></div>

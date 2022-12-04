@@ -1,3 +1,5 @@
+import clsx from "clsx";
+
 import useWindowDimensions from "../../components/usewindowdimensions";
 
 import Logo from "../../assets/logo-footer.svg";
@@ -21,7 +23,7 @@ const Footer = ({ customClass }) => {
   }
 
   return (
-    <div className={stl.container}>
+    <div className={clsx(stl.container, customClass)}>
       <div className={stl.row1}>
         <div className={stl.logo}>{flag ? <Logo /> : <Logo2 />}</div>
         <div className={stl.connectBtns}>

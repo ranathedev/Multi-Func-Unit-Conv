@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import clsx from "clsx";
 
 import useClickOnOutside from "../../lib/hooks";
 import useWindowDimensions from "../usewindowdimensions";
@@ -79,7 +80,7 @@ const Sidebar = ({ list, customClass }) => {
   useClickOnOutside(closeList, ref);
 
   return (
-    <div className={stl.container} id="sidebar">
+    <div className={clsx(stl.container, customClass)} id="sidebar">
       <div className={stl.sidebarTitle}>
         <MenuIcon onClick={expandSidebar} />
         <h2 id="sdbarTit">Menu</h2>

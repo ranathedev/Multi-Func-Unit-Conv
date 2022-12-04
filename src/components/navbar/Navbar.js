@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import clsx from "clsx";
 
 import DropdownArr from "../../assets/dropdown-arr.svg";
 import Logo from "../../assets/logo.svg";
@@ -38,7 +39,7 @@ const Navbar = ({ baseList, mostUsedList, customClass }) => {
   useClickOnOutside(close2, mostUsed);
 
   return (
-    <div className={stl.container}>
+    <div className={clsx(stl.container, customClass)}>
       <div customClass={stl.logo}>
         <Logo />
       </div>

@@ -1,3 +1,6 @@
+import { useState } from "react";
+import clsx from "clsx";
+
 import { db } from "../../../pages/api/firebase-config";
 import { collection, addDoc } from "firebase/firestore";
 
@@ -6,9 +9,8 @@ import FacebookIcon from "../../assets/facebook.svg";
 import TwitterIcon from "../../assets/twitter.svg";
 
 import stl from "./Contact.module.scss";
-import { useState } from "react";
 
-const Contact = () => {
+const Contact = ({ customClass }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [msg, setMsg] = useState("");
@@ -26,7 +28,7 @@ const Contact = () => {
   };
 
   return (
-    <div className={stl.container}>
+    <div className={clsx(stl.container, customClass)}>
       <form onSubmit={submitHandler}>
         <h1>Let's Connect</h1>
         <label>Your Name</label>
