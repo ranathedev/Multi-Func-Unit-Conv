@@ -1,32 +1,62 @@
+import { db } from "../../../pages/api/firebase-config";
+import { collection, addDoc } from "firebase/firestore";
+
 import MailIcon from "../../assets/mail.svg";
 import FacebookIcon from "../../assets/facebook.svg";
 import TwitterIcon from "../../assets/twitter.svg";
 
 import stl from "./Contact.module.scss";
+import { useState } from "react";
 
 const Contact = () => {
-  const submitHandler = (e) => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [msg, setMsg] = useState("");
+
+  const collectionRef = collection(db, "messages");
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
     console.log("submit");
+    await addDoc(collectionRef, { name, email, msg });
+
+    setName("");
+    setEmail("");
+    setMsg("");
   };
 
   return (
     <div className={stl.container}>
       <form onSubmit={submitHandler}>
         <h1>Let's Connect</h1>
-        <label for="name">Your Name</label>
-        <input type="text" name="name" placeholder="John Doe" required />
-        <label for="email">Your Email</label>
+        <label>Your Name</label>
+        <input
+          type="text"
+          placeholder="John Doe"
+          required
+          value={name}
+          onChange={(e) => {
+            setName(e.target.value);
+          }}
+        />
+        <label>Your Email</label>
         <input
           type="email"
-          name="email"
           placeholder="johndoe@example.com"
           required
+          value={email}
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
         />
-        <label for="message">Your Message</label>
+        <label>Your Message</label>
         <textarea
-          name="message"
           placeholder="Please make it short and meaningful."
           required
+          value={msg}
+          onChange={(e) => {
+            setMsg(e.target.value);
+          }}
         ></textarea>
         <input type="submit" value="Send" />
       </form>
