@@ -1,8 +1,10 @@
+import clsx from "clsx";
+
 import stl from "./Homepage.module.scss";
 
-const Homepage = () => {
+const Homepage = ({ customClass }) => {
   return (
-    <div className={stl.container}>
+    <div className={clsx(stl.container, customClass)}>
       <h1>Unit Converter</h1>
       <h4>Simple Multi Function</h4>
     </div>

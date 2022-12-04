@@ -1,8 +1,9 @@
 import stl from "./About.module.scss";
+import clsx from "clsx";
 
 const About = ({ customClass }) => {
   return (
-    <div className={stl.container}>
+    <div className={clsx(stl.container, customClass)}>
       <h1>About</h1>
       <div className={stl.about}>
         <p>

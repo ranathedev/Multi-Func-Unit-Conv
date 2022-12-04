@@ -263,7 +263,7 @@ const UnitConverter = ({ type, data, customClass }) => {
         </ul>
       </div> */}
       {(isLoading && <LoadingScreen />) || (
-        <div className={stl.container}>
+        <div className={clsx(stl.container, customClass)}>
           <h1>{type}</h1>
           <div className={stl.dataContain}>
             <div className={stl.input_value}>
