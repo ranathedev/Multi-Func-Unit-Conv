@@ -25,9 +25,18 @@ const Footer = () => {
       <div className={stl.row1}>
         <div className={stl.logo}>{flag ? <Logo /> : <Logo2 />}</div>
         <div className={stl.connectBtns}>
-          <FacebookIcon />
-          <TwitterIcon />
-          <EmailIcon />
+          <a
+            href="https://www.facebook.com/profile.php?id=100088339993655"
+            target="_blank"
+          >
+            <FacebookIcon />
+          </a>
+          <a href="https://twitter.com/intizar47426" target="_blank">
+            <TwitterIcon />
+          </a>
+          <a href="mailto:intizaralirana2@gmail.com" target="_blank">
+            <EmailIcon />
+          </a>
         </div>
       </div>
       <div className={stl.row2}>
