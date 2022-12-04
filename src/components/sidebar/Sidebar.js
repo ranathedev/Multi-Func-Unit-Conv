@@ -1,18 +1,66 @@
 import { useState, useRef, useEffect } from "react";
+
 import useClickOnOutside from "../../lib/hooks";
+import useWindowDimensions from "../usewindowdimensions";
 
 import ArrowIcon from "../../assets/navigate_next_FILL0_wght400_GRAD0_opsz24.svg";
+import MenuIcon from "../../assets/menu.svg";
 
 import stl from "./Sidebar.module.scss";
 
 const Sidebar = ({ list, customClass }) => {
   const [id, setId] = useState();
+  const [isOpen, setIsOpen] = useState(false);
   const ref = useRef();
+
+  const { width } = useWindowDimensions();
+
+  const breakpoint = 850;
 
   useEffect(() => {
     const id = localStorage.getItem("id");
     setId(id);
   }, []);
+
+  const expandSidebar = () => {
+    const sidebar = document.getElementById("sidebar");
+
+    if (width <= breakpoint) {
+      if (!isOpen) {
+        sidebar.classList.remove(stl.sdbarCollapse);
+
+        if (width <= breakpoint) {
+          sidebar.style.width = " 30vw";
+        } else if (width > breakpoint) {
+          sidebar.style.width = " 20vw";
+        }
+
+        setIsOpen(true);
+      } else if (isOpen) {
+        sidebar.classList.add(stl.sdbarCollapse);
+
+        setIsOpen(false);
+      }
+    } else {
+      setIsOpen(false);
+    }
+  };
+
+  if (typeof window !== "undefined") {
+    const sidebar = document.getElementById("sidebar");
+
+    if (width <= breakpoint && !isOpen) {
+      sidebar.classList.add(stl.sdbarCollapse);
+      sidebar.style.width = "70px";
+    } else if (width > breakpoint) {
+      sidebar.classList.remove(stl.sdbarCollapse);
+      sidebar.style.width = "20vw";
+    }
+
+    useEffect(() => {
+      width >= breakpoint && setIsOpen(false);
+    }, [width]);
+  }
 
   const openList = (id) => {
     const list = document.getElementById(id);
@@ -31,16 +79,18 @@ const Sidebar = ({ list, customClass }) => {
   useClickOnOutside(closeList, ref);
 
   return (
-    <div className={stl.container}>
-      <h2>Menu</h2>
-      <div className={stl.sidebarList}>
+    <div className={stl.container} id="sidebar">
+      <div className={stl.sidebarTitle}>
+        <MenuIcon onClick={expandSidebar} />
+        <h2 id="sdbarTit">Menu</h2>
+      </div>
+      <div className={stl.sidebarList} id="sidebarList">
         <ul className={stl.mainList} id="mainList">
           {list.map((option, index) => {
             return (
               <li key={index}>
                 <p
                   onClick={() => {
-                    console.log(index);
                     openList(index);
                     localStorage.setItem("id", index);
                   }}
@@ -55,7 +105,6 @@ const Sidebar = ({ list, customClass }) => {
                         className={opt.class}
                         id={opt.id}
                         onClick={() => {
-                          console.log(index);
                           closeList();
                         }}
                       >

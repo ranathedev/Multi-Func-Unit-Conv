@@ -2,25 +2,49 @@
 @import "../../../styles/common.module.scss";
 
 .container {
+  transition: all 0.5s;
   position: absolute;
   width: 20vw;
   height: 90vh;
-  margin-top: 10vh;
+  margin-top: 100px;
   background: linear-gradient(-45deg, $primaryblue, $palepurple);
   left: 0;
   border-radius: 0 150px 0 0;
   @extend .flexCol;
   overflow: scroll;
   z-index: 2;
+  user-select: none;
 
   &::-webkit-scrollbar {
     display: none;
   }
 
-  h2 {
-    font-size: 2.2rem;
+  .sidebarTitle {
+    @extend .flexVerCenter;
+    gap: 0 0.7rem;
     margin-left: 10%;
-    color: $white;
+    transform: 1s;
+
+    svg {
+      cursor: pointer;
+    }
+
+    path {
+      fill: $white;
+    }
+
+    h2 {
+      justify-content: center;
+      font-size: 2.2rem;
+      color: $white;
+      opacity: 1;
+    }
+
+    &:hover {
+      svg {
+        transform: scale(1.2);
+      }
+    }
   }
 
   .sidebarList {
@@ -33,6 +57,7 @@
       color: $white;
       width: 100%;
       user-select: none;
+      transition: 1s;
 
       &::-webkit-scrollbar {
         display: none;
@@ -101,5 +126,44 @@
         margin-top: 5%;
       }
     }
+  }
+}
+
+.sdbarCollapse {
+  transition: all 0.5s;
+  position: absolute;
+  width: 70px;
+  height: 90vh;
+  margin-top: 100px;
+  background: linear-gradient(-45deg, $primaryblue, $palepurple);
+  left: 0;
+  border-radius: 0 50px 0 0;
+  z-index: 3;
+  user-select: none;
+  display: flex;
+  align-content: flex-start;
+
+  .sidebarTitle {
+    margin: 0.1rem auto 0 auto;
+
+    path {
+      fill: $white;
+    }
+
+    h2 {
+      width: 0;
+      opacity: 0;
+    }
+
+    &:hover {
+      svg {
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  .sidebarList {
+    width: 0;
+    opacity: 0;
   }
 }
