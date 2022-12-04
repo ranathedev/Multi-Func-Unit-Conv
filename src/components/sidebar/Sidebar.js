@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import useClickOnOutside from "../../lib/hooks";
 
 import ArrowIcon from "../../assets/navigate_next_FILL0_wght400_GRAD0_opsz24.svg";
+import MenuIcon from "../../assets/menu.svg";
 
 import stl from "./Sidebar.module.scss";
 
@@ -32,7 +33,10 @@ const Sidebar = ({ list, customClass }) => {
 
   return (
     <div className={stl.container}>
-      <h2>Menu</h2>
+      <div className={stl.sidebarTitle}>
+        <MenuIcon />
+        <h2>Menu</h2>
+      </div>
       <div className={stl.sidebarList}>
         <ul className={stl.mainList} id="mainList">
           {list.map((option, index) => {
@@ -40,7 +44,6 @@ const Sidebar = ({ list, customClass }) => {
               <li key={index}>
                 <p
                   onClick={() => {
-                    console.log(index);
                     openList(index);
                     localStorage.setItem("id", index);
                   }}
@@ -55,7 +58,6 @@ const Sidebar = ({ list, customClass }) => {
                         className={opt.class}
                         id={opt.id}
                         onClick={() => {
-                          console.log(index);
                           closeList();
                         }}
                       >
