@@ -1,5 +1,5 @@
 import Stories from "../../src/components/stories";
-import Sidebar from "../../src/components/sidebar/Sidebar";
+import Sidebar from "../../src/components/sidebar";
 
 const sidebar = {
   arg: "Sidebar",

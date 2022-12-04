@@ -1,5 +1,5 @@
 import Stories from "../../src/components/stories";
-import UnitConverter from "../../src/components/unit-converter/Unit-Converter";
+import UnitConverter from "../../src/components/unit-converter";
 import unitConvData from "../../src/components/data";
 
 const UnitConverterStory = () => {
