@@ -1,17 +1,16 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection } from "@firebase/firestore";
+import { getFirestore } from "@firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: process.env.APIKEY,
-  databaseURL: process.env.DATABASEURL,
-  projectId: process.env.PROJECTID,
-  storageBucket: process.env.STORAGEBUCKET,
-  messagingSenderId: process.env.MESSAGINGSENDERID,
-  appId: process.env.APPID,
-  measurementId: process.env.MEASUREMENTID,
+  apiKey: "AIzaSyBQtKYlwyJO10ipp3nOcDW2xvs8m41YZkA",
+  authDomain: "multi-func-unit-conv.firebaseapp.com",
+  databseUrl: "https://multi-func-unit-conv-default-rtdb.firebaseio.com",
+  projectId: "multi-func-unit-conv",
+  storageBucket: "multi-func-unit-conv.appspot.com",
+  messagingSenderId: "75373470363",
+  appId: "1:75373470363:web:0e972ed2aa4314fb1b5c3e",
+  measurementId: "G-W0VN8K02W7",
 };
 
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
-
-export const collectionRef = collection(db, "Unit_Conv_Types");
