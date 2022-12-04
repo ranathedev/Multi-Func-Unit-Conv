@@ -1,5 +1,7 @@
 import { useState, useRef } from "react";
+
 import DropdownArr from "../../assets/dropdown-arr.svg";
+import Logo from "../../assets/logo.svg";
 
 import useClickOnOutside from "../../lib/hooks";
 
@@ -37,6 +39,9 @@ const Navbar = ({ baseList, mostUsedList, customClass }) => {
 
   return (
     <div className={stl.container}>
+      <div customClass={stl.logo}>
+        <Logo />
+      </div>
       <ul className={stl.mainList}>
         <li>Home</li>
         <li
