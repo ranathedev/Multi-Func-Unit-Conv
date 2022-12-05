@@ -7,7 +7,7 @@ const Homepage = ({ customClass }) => {
   return (
     <div className={clsx(stl.container, customClass)}>
       <h1>Unit Converter</h1>
-      <h4>Simple Multi Function</h4>
+      <h4>Multi Functional</h4>
     </div>
   );
 };

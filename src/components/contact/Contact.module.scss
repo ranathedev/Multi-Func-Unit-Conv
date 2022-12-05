@@ -9,6 +9,10 @@
   height: 100vh;
   background: $white;
 
+  h1 {
+    color: $blue;
+  }
+
   form {
     @extend .flexCol;
     gap: 1rem;
@@ -70,10 +74,10 @@
   }
 
   .divider {
-    height: 90vh;
+    height: 80vh;
     border: 2px solid $blue;
     border-radius: 20%;
-    margin: 2rem;
+    margin: 10% 2rem 5% 2rem;
   }
 
   .contact {
@@ -128,6 +132,7 @@
 @media screen and (max-width: 750px) {
   .container {
     flex-direction: column;
+    margin-top: 2rem;
 
     form {
       width: 90%;

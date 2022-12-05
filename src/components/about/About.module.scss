@@ -29,3 +29,12 @@
     }
   }
 }
+
+@media screen and (max-width: 570px) {
+  .container {
+    height: calc(100vh - 500px);
+    .about {
+      height: 90%;
+    }
+  }
+}

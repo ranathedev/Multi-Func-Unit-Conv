@@ -28,9 +28,10 @@
       padding: 1rem;
       border: 1px solid transparent;
       cursor: pointer;
+      height: 50px;
+      transition: all 0.3s;
 
       svg {
-        transform: rotate(270deg);
         width: 40px;
       }
     }
@@ -41,7 +42,6 @@
 
       svg {
         fill: $primaryblue;
-        transform: rotate(0deg);
       }
     }
 
@@ -54,7 +54,7 @@
       position: absolute;
       top: 100%;
       left: 0;
-      background: $primarygreen;
+      background: $blue;
       border-radius: 0 0 10px 10px;
       @extend .flexColCenter;
       text-align: center;
@@ -85,6 +85,20 @@
 
   ul {
     display: none;
+  }
+}
+
+.navbar {
+  background: linear-gradient(-45deg, $blue1, $primarygreen);
+
+  .mainList {
+    li {
+      color: $white;
+
+      svg {
+        fill: $white;
+      }
+    }
   }
 }
 
@@ -147,10 +161,11 @@
 
     ul {
       list-style: none;
+      overflow: visible;
       position: absolute;
       top: 70%;
       right: -70%;
-      background: $blue1;
+      background: $blue;
       width: 100vw;
       border-radius: 10px;
       height: 150px;
