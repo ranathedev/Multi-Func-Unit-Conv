@@ -13,7 +13,6 @@ const StoriesLinks = () => (
     <Link href="/stories/footer">Footer</Link>
     <Link href="/stories/about">About</Link>
     <Link href="/stories/layoutHome">LayoutHome</Link>
-    <Link href="/stories/layoutAbout">LayoutAbout</Link>
   </div>
 );
 

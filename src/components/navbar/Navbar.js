@@ -59,8 +59,6 @@ const Navbar = ({
     }
   };
 
-  console.log(customClass);
-
   return (
     <div className={clsx(stl.container, stl[`${customClass}`])}>
       <div className={stl.logo}>
