@@ -1,17 +1,16 @@
 @import "../../../styles/color.module.scss";
+@import "../../../styles/common.module.scss";
 
 .container {
-  display: flex;
+  @extend .flexCenter;
   justify-content: space-between;
-  align-items: center;
   width: 100vw;
   padding: 5rem;
   height: 100vh;
   background: $white;
 
   form {
-    display: flex;
-    flex-direction: column;
+    @extend .flexCol;
     gap: 1rem;
     width: 45%;
 
@@ -22,9 +21,8 @@
 
     input[type="text"],
     input[type="email"] {
+      all: unset;
       padding: 1rem;
-      outline: none;
-      border: none;
       background: none;
       border-bottom: 2px solid $blue;
       font-size: 1.5rem;
@@ -46,18 +44,21 @@
       border-radius: 10px;
       background: none;
 
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
       &:focus {
         box-shadow: 0 0 10px 3px $blue;
       }
     }
 
     input[type="submit"] {
+      all: unset;
       margin: 1rem auto;
       font-size: 1.5rem;
       padding: 0.8rem 1.2rem;
       border-radius: 5px;
-      outline: none;
-      border: none;
       background: $blue;
       color: $white;
       cursor: pointer;
@@ -77,9 +78,7 @@
 
   .contact {
     width: 45%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    @extend .flexColCenter;
     gap: 1rem 0;
 
     h1 {
@@ -90,13 +89,12 @@
       width: 300px;
       background: linear-gradient(90deg, $blue1, $primaryblue);
       border-radius: 1.5rem;
-      padding: 0 0 0 10px;
+      padding-left: 10px;
       cursor: pointer;
       transform: all 0.5s;
 
       a {
-        display: flex;
-        align-items: center;
+        @extend .flexVerCenter;
         justify-content: space-evenly;
         height: 60px;
 
@@ -109,9 +107,7 @@
         }
 
         .iconContainer {
-          display: flex;
-          justify-content: center;
-          align-items: center;
+          @extend .flexCenter;
           width: 50px;
           height: 45px;
           border-left: 2px solid $white;
@@ -150,7 +146,4 @@
 }
 
 @media screen and (max-width: 330px) {
-  .followBtn {
-    // width: 200px;
-  }
 }

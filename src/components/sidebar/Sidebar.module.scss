@@ -3,7 +3,7 @@
 
 .container {
   transition: all 0.3s;
-  position: absolute;
+  position: fixed;
   width: 20vw;
   height: 90vh;
   margin-top: 100px;
@@ -68,8 +68,7 @@
           font-size: 1.5rem;
           padding: 0.5rem 0.5rem;
           margin-right: 5%;
-          display: flex;
-          align-items: center;
+          @extend .flexVerCenter;
           justify-content: space-between;
           border-bottom: 1px solid transparent;
           cursor: pointer;

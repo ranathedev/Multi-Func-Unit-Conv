@@ -14,6 +14,11 @@
   align-items: center;
 }
 
+.flexRowCenter {
+  @extend .flexRow;
+  justify-content: center;
+}
+
 .flexCenter {
   display: flex;
   justify-content: center;
