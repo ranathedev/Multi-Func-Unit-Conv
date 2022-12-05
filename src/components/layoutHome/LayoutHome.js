@@ -3,10 +3,10 @@ import Home from "../homepage";
 
 const LayoutHome = () => {
   return (
-    <div className={stl.container}>
+    <>
       <Navbar />
       <Home />
-    </div>
+    </>
   );
 };
 

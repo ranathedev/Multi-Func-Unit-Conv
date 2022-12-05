@@ -4,11 +4,11 @@ import Footer from "../footer";
 
 const LayoutAbout = () => {
   return (
-    <div className={stl.container}>
+    <>
       <About />
       <Navbar customClass="navbar" />
       <Footer />
-    </div>
+    </>
   );
 };
 

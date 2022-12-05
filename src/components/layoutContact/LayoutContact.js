@@ -3,10 +3,10 @@ import Contact from "../contact";
 
 const LayoutContact = () => {
   return (
-    <div className={stl.container}>
+    <>
       <Navbar customClass="navbar" />
       <Contact />
-    </div>
+    </>
   );
 };
 
