@@ -1,4 +1,5 @@
 @import "../../../styles/color.module.scss";
+@import "../../../styles/common.module.scss";
 
 .test {
   ul {
@@ -14,8 +15,7 @@
   border-radius: 25px;
   width: 60%;
   padding: 1rem 2rem;
-  display: flex;
-  flex-direction: column;
+  @extend .flexCol;
   justify-content: space-evenly;
   box-shadow: 0 0 20px 8px $boxshadow;
 
@@ -81,7 +81,6 @@
     box-shadow: 0 0 20px 8px $boxshadow;
     background: $white;
     display: none;
-    // width: 100%;
     z-index: 5;
     cursor: pointer;
     height: 250px;
@@ -136,11 +135,6 @@
     display: none;
   }
 
-  /* Firefox */
-  input[type="number"] {
-    -moz-appearance: textfield;
-  }
-
   input:focus {
     border-bottom-color: transparent;
     border-radius: 5px;
@@ -154,7 +148,7 @@
 
   .output {
     width: 100%;
-    height: 100%;
+    height: 45px;
     padding: 8px 15px;
     background: $primarygreen;
     border-radius: 5px;
@@ -203,6 +197,15 @@
   .container {
     width: max-content;
     padding: 0;
+  }
+}
+
+@media screen and (max-width: 475px) {
+  .container {
+    width: 300px;
+    input {
+      padding: 0;
+    }
   }
 }
 

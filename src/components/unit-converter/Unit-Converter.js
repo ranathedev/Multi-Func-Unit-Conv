@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from "react";
+import clsx from "clsx";
 import axios from "axios";
 
 import LoadingScreen from "../loaingScreen/Loading";
@@ -331,8 +332,9 @@ const UnitConverter = ({ type, data, customClass }) => {
           </div>
           <div className={stl.Btn}>
             <button
+              type="submit"
               onClick={() => {
-                convert(value, inputValue, outputValue, type);
+                // convert(value, inputValue, outputValue, type);
               }}
               className={stl.convBtn}
             >
