@@ -5,14 +5,10 @@
 .container {
   height: 100vh;
   width: 100vw;
-  background-image: radial-gradient(
-    circle farthest-corner at 10% 20%,
-    $purple 0%,
-    $lightblue 90%
-  );
+  background: linear-gradient(-45deg, $blue1, $primarygreen);
   font-family: "Anton", sans-serif;
   font-size: 3vw;
-  color: #fff;
+  color: $white;
   letter-spacing: 0.8rem;
   @extend .flexColCenter;
   h1,
@@ -22,6 +18,6 @@
 
   h4 {
     color: $black;
-    letter-spacing: 5px;
+    letter-spacing: 1rem;
   }
 }
