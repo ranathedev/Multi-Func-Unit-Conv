@@ -1,5 +1,7 @@
-import stl from "./About.module.scss";
+import PropTypes from "prop-types";
 import clsx from "clsx";
+
+import stl from "./About.module.scss";
 
 const About = ({ customClass }) => {
   return (
@@ -20,6 +22,10 @@ const About = ({ customClass }) => {
       </div>
     </div>
   );
+};
+
+About.propTypes = {
+  customClass: PropTypes.string,
 };
 
 export default About;

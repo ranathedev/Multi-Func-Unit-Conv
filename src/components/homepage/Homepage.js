@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import clsx from "clsx";
 
 import stl from "./Homepage.module.scss";
@@ -9,6 +10,10 @@ const Homepage = ({ customClass }) => {
       <h4>Simple Multi Function</h4>
     </div>
   );
+};
+
+Homepage.propTypes = {
+  customClass: PropTypes.string,
 };
 
 export default Homepage;

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useState } from "react";
 import clsx from "clsx";
 
@@ -97,6 +98,10 @@ const Contact = ({ customClass }) => {
       </div>
     </div>
   );
+};
+
+Contact.propTypes = {
+  customClass: PropTypes.string,
 };
 
 export default Contact;
