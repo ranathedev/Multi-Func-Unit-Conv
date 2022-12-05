@@ -17,7 +17,6 @@ const Navbar = ({
   contactLink,
   mostUsedList,
   unitConvLink,
-  liClickHandler,
   mostUsedLiHandler,
   customClass,
 }) => {
@@ -60,8 +59,10 @@ const Navbar = ({
     }
   };
 
+  console.log(customClass);
+
   return (
-    <div className={clsx(stl.container, customClass)}>
+    <div className={clsx(stl.container, stl[`${customClass}`])}>
       <div className={stl.logo}>
         <Link href={`${homeLink}`}>
           <Logo />
@@ -155,7 +156,6 @@ Navbar.propTypes = {
   contactLink: PropTypes.string,
   unitConvLink: PropTypes.string,
   mostUsedList: PropTypes.array,
-  baseLiHandler: PropTypes.func,
   mostUsedLiHandler: PropTypes.func,
   customClass: PropTypes.string,
 };

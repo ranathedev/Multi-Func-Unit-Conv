@@ -13,7 +13,6 @@
   background: transparent;
   backdrop-filter: blur(20px);
   user-select: none;
-  transition: all 0.3s;
 
   .mainList {
     box-sizing: border-box;
@@ -30,6 +29,7 @@
       border: 1px solid transparent;
       cursor: pointer;
       height: 50px;
+      transition: all 0.3s;
 
       svg {
         width: 40px;
@@ -85,6 +85,20 @@
 
   ul {
     display: none;
+  }
+}
+
+.navbar {
+  background: linear-gradient(-45deg, $blue1, $primarygreen);
+
+  .mainList {
+    li {
+      color: $white;
+
+      svg {
+        fill: $white;
+      }
+    }
   }
 }
 
@@ -147,10 +161,11 @@
 
     ul {
       list-style: none;
+      overflow: visible;
       position: absolute;
       top: 70%;
       right: -70%;
-      background: $blue1;
+      background: $blue;
       width: 100vw;
       border-radius: 10px;
       height: 150px;

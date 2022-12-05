@@ -5,7 +5,7 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 400px;
+  height: 300px;
   background: linear-gradient(-45deg, $black2, $black);
   padding: 0 5rem;
   @extend .flexCol;
@@ -80,11 +80,13 @@
   }
 }
 
-@media screen and (max-width: 340px) {
+@media screen and (max-width: 600px) {
   .container {
-    height: 100%;
+    height: max-content;
   }
+}
 
+@media screen and (max-width: 340px) {
   .row1 {
     .logo {
       margin-bottom: 0.7rem;
