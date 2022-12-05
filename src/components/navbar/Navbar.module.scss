@@ -18,13 +18,12 @@
     box-sizing: border-box;
     list-style: none;
     @extend .flexSpaceBtw;
-    font-size: 1.5rem;
-    gap: 0 2rem;
+    font-size: 1.3rem;
 
     li {
       box-sizing: border-box;
       @extend .flexVerCenter;
-      gap: 15px;
+      gap: 10px;
       color: $textblack;
       padding: 1rem;
       border: 1px solid transparent;
@@ -32,6 +31,7 @@
 
       svg {
         transform: rotate(270deg);
+        width: 40px;
       }
     }
 
@@ -75,6 +75,98 @@
         border-radius: 5px;
         background: $blue;
         color: $white;
+      }
+    }
+  }
+}
+
+.exp_col_Btn {
+  display: none;
+
+  ul {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1240px) {
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .mainList {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 1015px) {
+  .container {
+    justify-content: center;
+  }
+  .logo {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 668px) {
+  .container {
+    justify-content: space-evenly;
+
+    .mainList {
+      .common_conv,
+      .engineer_conv {
+        width: 0;
+        height: 0;
+        opacity: 0;
+        z-index: -5;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .container {
+    justify-content: flex-end;
+
+    .mainList {
+      width: 0;
+      height: 0;
+      z-index: -1000;
+      opacity: 0;
+
+      li {
+        height: 0;
+      }
+    }
+  }
+
+  .exp_col_Btn {
+    display: flex;
+    position: relative;
+
+    ul {
+      list-style: none;
+      position: absolute;
+      top: 70%;
+      right: -70%;
+      background: $blue1;
+      width: 100vw;
+      border-radius: 10px;
+      height: 150px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      li {
+        text-align: center;
+        padding: 0.7rem 0;
+        font-size: 1.3rem;
+        color: $white;
+
+        &:hover {
+          font-size: 1.5rem;
+        }
       }
     }
   }
