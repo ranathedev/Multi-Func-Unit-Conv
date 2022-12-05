@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useEffect, useState, useRef } from "react";
 import clsx from "clsx";
 import axios from "axios";
@@ -345,6 +346,11 @@ const UnitConverter = ({ type, data, customClass }) => {
       )}
     </>
   );
+};
+
+UnitConverter.propTypes = {
+  type: PropTypes.string,
+  data: PropTypes.array,
 };
 
 export default UnitConverter;
