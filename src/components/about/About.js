@@ -4,7 +4,6 @@ import clsx from "clsx";
 const About = ({ customClass }) => {
   return (
     <div className={clsx(stl.container, customClass)}>
-      <h1>About</h1>
       <div className={stl.about}>
         <p>
           Unit Converter is a free, multi-functional unit converter webapp. It
