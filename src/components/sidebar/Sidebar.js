@@ -48,15 +48,18 @@ const Sidebar = ({ list, customClass }) => {
   };
 
   if (typeof window !== "undefined") {
-    const sidebar = document.getElementById("sidebar");
+    setTimeout(() => {
+      console.log("running");
+      const sidebar = document.getElementById("sidebar");
 
-    if (width <= breakpoint && !isOpen) {
-      sidebar.classList.add(stl.sdbarCollapse);
-      sidebar.style.width = "70px";
-    } else if (width > breakpoint) {
-      sidebar.classList.remove(stl.sdbarCollapse);
-      sidebar.style.width = "20vw";
-    }
+      if (width <= breakpoint && !isOpen) {
+        sidebar.classList.add(stl.sdbarCollapse);
+        sidebar.style.width = "70px";
+      } else if (width > breakpoint) {
+        sidebar.classList.remove(stl.sdbarCollapse);
+        sidebar.style.width = "20vw";
+      }
+    }, 100);
 
     useEffect(() => {
       width >= breakpoint && setIsOpen(false);

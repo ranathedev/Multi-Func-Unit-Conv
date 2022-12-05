@@ -40,7 +40,7 @@ const Navbar = ({ baseList, mostUsedList, customClass }) => {
 
   return (
     <div className={clsx(stl.container, customClass)}>
-      <div customClass={stl.logo}>
+      <div className={stl.logo}>
         <Logo />
       </div>
       <ul className={stl.mainList}>
@@ -65,8 +65,8 @@ const Navbar = ({ baseList, mostUsedList, customClass }) => {
         >
           Base Converters <DropdownArr />
           <ul ref={base} id="drpdwn1" className={stl.drownDown}>
-            {baseList.map((option) => {
-              return <li>{option}</li>;
+            {baseList.map((option, i) => {
+              return <li key={i}>{option}</li>;
             })}
           </ul>
         </li>
@@ -90,8 +90,8 @@ const Navbar = ({ baseList, mostUsedList, customClass }) => {
         >
           Most Used Converters <DropdownArr />
           <ul ref={mostUsed} id="drpdwn2" className={stl.drownDown}>
-            {mostUsedList.map((option) => {
-              return <li>{option}</li>;
+            {mostUsedList.map((option, i) => {
+              return <li key={i}>{option}</li>;
             })}
           </ul>
         </li>
