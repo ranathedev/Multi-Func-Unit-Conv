@@ -1,6 +1,6 @@
 const unitConvData = [
   {
-    type: "acceleration",
+    type: "Acceleration",
     data: [
       { symbol: "g-force", name: "Gravitational Accleration" },
       {
@@ -10,7 +10,7 @@ const unitConvData = [
     ],
   },
   {
-    type: "angle",
+    type: "Angle",
     data: [
       { symbol: "rad", name: "Radian" },
       { symbol: "deg", name: "Degree" },
@@ -20,7 +20,7 @@ const unitConvData = [
     ],
   },
   {
-    type: "apparentPower",
+    type: "ApparentPower",
     data: [
       { symbol: "VA", name: "Volt Amp" },
       { symbol: "mVA", name: "Milli Volt Amp" },
@@ -30,7 +30,7 @@ const unitConvData = [
     ],
   },
   {
-    type: "area",
+    type: "Area",
     data: [
       { symbol: "nm2", name: "Nano Meter Square" },
       { symbol: "μm2", name: "Micro Meter Square" },
@@ -46,11 +46,9 @@ const unitConvData = [
       { symbol: "mi2", name: "Mile Square" },
     ],
   },
-  { type: "charge", data: [] },
   {
-    type: "current",
+    type: "Charge",
     data: [
-      { symbol: "c", name: "Coulombs" },
       { symbol: "mC", name: "Milli Coulombs" },
       { symbol: "μC", name: "Micro Coulombs" },
       { symbol: "nC", name: "Nano Coulombs" },
@@ -58,7 +56,15 @@ const unitConvData = [
     ],
   },
   {
-    type: "digital",
+    type: "Current",
+    data: [
+      { symbol: "A", name: "Ampere" },
+      { symbol: "mA", name: "Milli Ampere" },
+      { symbol: "kA", name: "Kilo Ampere" },
+    ],
+  },
+  {
+    type: "Digital",
     data: [
       { symbol: "b", name: "Bit" },
       { symbol: "Kb", name: "Kilo Bit" },
@@ -73,14 +79,14 @@ const unitConvData = [
     ],
   },
   {
-    type: "each",
+    type: "Each",
     data: [
       { symbol: "ea", name: "Each" },
       { symbol: "dz", name: "Dozen" },
     ],
   },
   {
-    type: "energy",
+    type: "Energy",
     data: [
       { symbol: "Wh", name: "Watt Hour" },
       { symbol: "mWh", name: "Milli Watt Hour" },
@@ -92,7 +98,7 @@ const unitConvData = [
     ],
   },
   {
-    type: "force",
+    type: "Force",
     data: [
       { symbol: "N", name: "Newton" },
       { symbol: "kN", name: "Kilo Newton" },
@@ -100,7 +106,7 @@ const unitConvData = [
     ],
   },
   {
-    type: "frquency",
+    type: "Ferquency",
     data: [
       { symbol: "mHz", name: "Milli Hertz" },
       { symbol: "Hz", name: "Hertz" },
@@ -114,14 +120,14 @@ const unitConvData = [
     ],
   },
   {
-    type: "illuminance",
+    type: "Illuminance",
     data: [
       { symbol: "lx", name: "Lux" },
       { symbol: "ft-cd", name: "Feet Candle" },
     ],
   },
   {
-    type: "length",
+    type: "Length",
     data: [
       { symbol: "nm", name: "Nano Meter" },
       { symbol: "μm", name: "Micro Meter" },
@@ -139,7 +145,7 @@ const unitConvData = [
     ],
   },
   {
-    type: "mass",
+    type: "Mass",
     data: [
       { symbol: "mcg", name: "Micro Gram" },
       { symbol: "mg", name: "Milli Gram" },
@@ -152,7 +158,7 @@ const unitConvData = [
     ],
   },
   {
-    type: "pace",
+    type: "Pace",
     data: [
       { symbol: "min/km", name: "Minutes/km" },
       { symbol: "s/m", name: "Second/m" },
@@ -161,7 +167,7 @@ const unitConvData = [
     ],
   },
   {
-    type: "partsPer",
+    type: "Parts Per",
     data: [
       { symbol: "ppm", name: "Parts/million" },
       { symbol: "ppb", name: "Part/billion" },
@@ -170,7 +176,7 @@ const unitConvData = [
     ],
   },
   {
-    type: "pieces",
+    type: "Pieces",
     data: [
       { symbol: "pcs", name: "Pieces" },
       { symbol: "bk-doz", name: "Bakers Dozen" },
@@ -188,7 +194,7 @@ const unitConvData = [
     ],
   },
   {
-    type: "power",
+    type: "Power",
     data: [
       { symbol: "W", name: "Watt" },
       { symbol: "mW", name: "Milli Watt" },
@@ -202,7 +208,7 @@ const unitConvData = [
     ],
   },
   {
-    type: "pressure",
+    type: "Pressure",
     data: [
       { symbol: "Pa", name: "Pascal" },
       { symbol: "kPa", name: "Kilo Pascal" },
@@ -216,7 +222,7 @@ const unitConvData = [
     ],
   },
   {
-    type: "reaciveEnergy",
+    type: "Reacive Energy",
     data: [
       { symbol: "VARh", name: "Volt Amp Reactive Hr" },
       { symbol: "mVARh", name: "Milli Volt Amp Reactive Hr" },
@@ -226,7 +232,7 @@ const unitConvData = [
     ],
   },
   {
-    type: "reactivePower",
+    type: "Reactive Power",
     data: [
       { symbol: "VAR", name: "Volt Amp Reactive" },
       { symbol: "mVAR", name: "Milli Volt Amp Reactive" },
@@ -236,7 +242,7 @@ const unitConvData = [
     ],
   },
   {
-    type: "speed",
+    type: "Speed",
     data: [
       { symbol: "m/s", name: "Meter/sec" },
       { symbol: "km/h", name: "Kilo Meter/hr" },
@@ -247,7 +253,7 @@ const unitConvData = [
     ],
   },
   {
-    type: "temperature",
+    type: "Temperature",
     data: [
       { symbol: "C", name: "Celsius" },
       { symbol: "K", name: "Kelvin" },
@@ -256,7 +262,7 @@ const unitConvData = [
     ],
   },
   {
-    type: "time",
+    type: "Time",
     data: [
       { symbol: "ns", name: "Nano Second" },
       { symbol: "mu", name: "Micro Second" },
@@ -271,7 +277,7 @@ const unitConvData = [
     ],
   },
   {
-    type: "voltage",
+    type: "Voltage",
     data: [
       { symbol: "V", name: "Volt" },
       { symbol: "mV", name: "Milli Volt" },
@@ -279,7 +285,7 @@ const unitConvData = [
     ],
   },
   {
-    type: "volume",
+    type: "Volume",
     data: [
       { symbol: "mm3", name: "Cubic Millimeter" },
       { symbol: "cm3", name: "Cubic Centimeter" },
@@ -308,7 +314,7 @@ const unitConvData = [
     ],
   },
   {
-    type: "volumeFlowRate",
+    type: "Volume Flow Rate",
     data: [
       { symbol: "mm3/s", name: "Cubic Millimeter/sec" },
       { symbol: "cm3/s", name: "Cubic Centimeter/sec" },

@@ -10,18 +10,14 @@ import DropdownIcon from "../../assets/dropdown-arr.svg";
 
 import stl from "./Unit-Converter.module.scss";
 
-const UnitConverter = ({ type, data, customClass }) => {
-  // const [ConvType, setConvType] = useState(type);
+const UnitConverter = ({ type, val, data, customClass }) => {
   const [res, setRes] = useState("");
   const [isLoading, setIsLoading] = useState("");
-  const [inputValue, setInputValue] = useState("Select...");
-  const [outputValue, setOutputValue] = useState("Select...");
+  const [inputValue, setInputValue] = useState("");
+  const [outputValue, setOutputValue] = useState("");
+  const [inputName, setInputName] = useState("");
+  const [outputName, setOutputName] = useState("");
   const [value, setValue] = useState(1);
-
-  // useEffect(() => {
-  //   setInputValue("Select...");
-  //   setOutputValue("Select...");
-  // }, [ConvType]);
 
   const inputValueRef = useRef();
   const outputValueRef = useRef();
@@ -31,6 +27,13 @@ const UnitConverter = ({ type, data, customClass }) => {
       Authorization: "Bearer 373|5muD1RjjZDqrhmJk628CK0b17ky0K6SlMFnAYxkX",
     },
   };
+
+  useEffect(() => {
+    setInputName(val);
+    setOutputName(val);
+    setInputValue("");
+    setOutputValue("");
+  }, [type]);
 
   const convert = (value, inputVal, outputVal, type) => {
     axios
@@ -77,280 +80,92 @@ const UnitConverter = ({ type, data, customClass }) => {
   useClickOnOutside(closeDropDownOutput, outputValueRef);
 
   return (
-    <>
-      {/* <div className={stl.test}>
-        <ul>
-          <li
-            onClick={() => {
-              setConvType("acceleration");
-            }}
-          >
-            acceleration
-          </li>
-          <li
-            onClick={() => {
-              setConvType("angle");
-            }}
-          >
-            angle
-          </li>
-          <li
-            onClick={() => {
-              setConvType("apparentPower");
-            }}
-          >
-            apparentPower
-          </li>
-          <li
-            onClick={() => {
-              setConvType("area");
-            }}
-          >
-            area
-          </li>
-          <li
-            onClick={() => {
-              setConvType("charge");
-            }}
-          >
-            charge
-          </li>
-          <li
-            onClick={() => {
-              setConvType("digtal");
-            }}
-          >
-            digital
-          </li>
-          <li
-            onClick={() => {
-              setConvType("each");
-            }}
-          >
-            each
-          </li>
-          <li
-            onClick={() => {
-              setConvType("energy");
-            }}
-          >
-            energy
-          </li>
-          <li
-            onClick={() => {
-              setConvType("force");
-            }}
-          >
-            force
-          </li>
-          <li
-            onClick={() => {
-              setConvType("frequency");
-            }}
-          >
-            frequency
-          </li>
-          <li
-            onClick={() => {
-              setConvType("illuminance");
-            }}
-          >
-            illuminance
-          </li>
-          <li
-            onClick={() => {
-              setConvType("length");
-            }}
-          >
-            length
-          </li>
-          <li
-            onClick={() => {
-              setConvType("mass");
-            }}
-          >
-            mass
-          </li>
-          <li
-            onClick={() => {
-              setConvType("pace");
-            }}
-          >
-            pace
-          </li>
-          <li
-            onClick={() => {
-              setConvType("partsPer");
-            }}
-          >
-            partsPer
-          </li>
-          <li
-            onClick={() => {
-              setConvType("pieces");
-            }}
-          >
-            pieces
-          </li>
-          <li
-            onClick={() => {
-              setConvType("power");
-            }}
-          >
-            power
-          </li>
-          <li
-            onClick={() => {
-              setConvType("pressure");
-            }}
-          >
-            pressure
-          </li>
-          <li
-            onClick={() => {
-              setConvType("reactiveEnergy");
-            }}
-          >
-            reactiveEnergy
-          </li>
-          <li
-            onClick={() => {
-              setConvType("reactivePower");
-            }}
-          >
-            reactivePower
-          </li>
-          <li
-            onClick={() => {
-              setConvType("speed");
-            }}
-          >
-            speed
-          </li>
-          <li
-            onClick={() => {
-              setConvType("temperature");
-            }}
-          >
-            temperature
-          </li>
-          <li
-            onClick={() => {
-              setConvType("time");
-            }}
-          >
-            time
-          </li>
-          <li
-            onClick={() => {
-              setConvType("voltage");
-            }}
-          >
-            voltage
-          </li>
-          <li
-            onClick={() => {
-              setConvType("volume");
-            }}
-          >
-            volume
-          </li>
-          <li
-            onClick={() => {
-              setConvType("volumeFlowRate");
-            }}
-          >
-            volumeFlowRate
-          </li>
-        </ul>
-      </div> */}
-      {(isLoading && <LoadingScreen />) || (
-        <div className={clsx(stl.container, customClass)}>
-          <h1>{type}</h1>
-          <div className={stl.dataContain}>
-            <div className={stl.input_value}>
-              <div className={stl.select}>
-                <button onClick={openDropDownInput} className={stl.dropDownBtn}>
-                  {inputValue} <DropdownIcon />
-                </button>
-                <ul
-                  ref={inputValueRef}
-                  id="dropDownInput"
-                  className={stl.dropDown_input}
-                >
-                  {data.map((unit, i) => {
-                    return (
-                      <li
-                        key={i}
-                        onClick={() => {
-                          closeDropDownInput();
-                          setInputValue(unit.symbol);
-                        }}
-                      >
-                        {unit.name} <span>({unit.symbol})</span>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-              <input
-                type="number"
-                placeholder="Enter value to Convert..."
-                onChange={(e) => setValue(e.target.value)}
-                onFocus={(e) => removePlaceholder(e)}
-              />
+    (isLoading && <LoadingScreen />) || (
+      <div className={clsx(stl.container, customClass)}>
+        <h1>{type}</h1>
+        <div className={stl.dataContain}>
+          <div className={stl.input_value}>
+            <div className={stl.select}>
+              <button onClick={openDropDownInput} className={stl.dropDownBtn}>
+                {inputName} <DropdownIcon />
+              </button>
+              <ul
+                ref={inputValueRef}
+                id="dropDownInput"
+                className={stl.dropDown_input}
+              >
+                {data.map((unit, i) => {
+                  return (
+                    <li
+                      key={i}
+                      onClick={() => {
+                        closeDropDownInput();
+                        setInputValue(unit.symbol);
+                        setInputName(unit.name);
+                      }}
+                    >
+                      {unit.name} <span>({unit.symbol})</span>
+                    </li>
+                  );
+                })}
+              </ul>
             </div>
-            <div className={stl.output_value}>
-              <div className={stl.select}>
-                <button
-                  onClick={openDropDownOutput}
-                  className={stl.dropDownBtn}
-                >
-                  {outputValue} <DropdownIcon />
-                </button>
-                <ul
-                  ref={outputValueRef}
-                  id="dropDownOutput"
-                  className={stl.dropDown_output}
-                >
-                  {data.map((unit, i) => {
-                    return (
-                      <li
-                        key={i}
-                        onClick={() => {
-                          closeDropDownOutput();
-                          setOutputValue(unit.symbol);
-                        }}
-                      >
-                        {unit.name} <span>({unit.symbol})</span>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-              <span className={stl.output}>{res}</span>
-            </div>
+            <input
+              type="number"
+              placeholder="Enter value to Convert..."
+              onChange={(e) => setValue(e.target.value)}
+              onFocus={(e) => removePlaceholder(e)}
+            />
           </div>
-          <div className={stl.Btn}>
-            <button
-              type="submit"
-              onClick={() => {
-                // convert(value, inputValue, outputValue, type);
-              }}
-              className={stl.convBtn}
-            >
-              Convert
-            </button>
+          <div className={stl.output_value}>
+            <div className={stl.select}>
+              <button onClick={openDropDownOutput} className={stl.dropDownBtn}>
+                {outputName} <DropdownIcon />
+              </button>
+              <ul
+                ref={outputValueRef}
+                id="dropDownOutput"
+                className={stl.dropDown_output}
+              >
+                {data.map((unit, i) => {
+                  return (
+                    <li
+                      key={i}
+                      onClick={() => {
+                        closeDropDownOutput();
+                        setOutputValue(unit.symbol);
+                        setOutputName(unit.name);
+                      }}
+                    >
+                      {unit.name} <span>({unit.symbol})</span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+            <span className={stl.output}>{res}</span>
           </div>
         </div>
-      )}
-    </>
+        <div className={stl.Btn}>
+          <button
+            type="submit"
+            onClick={() => {
+              // convert(value, inputValue, outputValue, type);
+            }}
+            className={stl.convBtn}
+          >
+            Convert
+          </button>
+        </div>
+      </div>
+    )
   );
 };
 
 UnitConverter.propTypes = {
   type: PropTypes.string,
   data: PropTypes.array,
+  val: PropTypes.string,
 };
 
 export default UnitConverter;

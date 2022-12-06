@@ -1,17 +1,34 @@
+import { useEffect, useState } from "react";
+
 import Navbar from "../navbar";
 import Sidebar from "../sidebar";
 import UnitConverter from "../unit-converter";
 
-import stl from "./LayoutUnitConv.module.scss";
+import changeValue from "../changeValue";
 
-import acceleration from "../../../pages/stories/unit-converter";
+import stl from "./LayoutUnitConv.module.scss";
+import { angle } from "../changeValue/ChangeValue";
 
 const LayoutUnitConv = () => {
+  const type = angle;
+
+  const [typeOfUnit, setTypeOfUnit] = useState(type);
+
+  const changeType = (type) => {
+    const value = changeValue(type);
+    setTypeOfUnit(value);
+  };
+
   return (
     <div className={stl.container}>
       <Navbar customClass="navbar" />
-      <Sidebar />
-      <UnitConverter data={[acceleration]} customClass={stl.unit_conv} />
+      <Sidebar liClickHandler={changeType} />
+      <UnitConverter
+        type={typeOfUnit.type}
+        val="Select..."
+        data={[...typeOfUnit.data]}
+        customClass={stl.unit_conv}
+      />
     </div>
   );
 };
