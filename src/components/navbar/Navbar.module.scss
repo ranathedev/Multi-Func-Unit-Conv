@@ -10,8 +10,7 @@
   padding: 0 5rem;
   @extend .flexVerCenter;
   justify-content: space-between;
-  background: transparent;
-  backdrop-filter: blur(20px);
+  background: linear-gradient(-45deg, $blue1, $primarygreen);
   user-select: none;
   z-index: 5;
 
@@ -20,29 +19,62 @@
     list-style: none;
     @extend .flexSpaceBtw;
     font-size: 1.3rem;
+    gap: 0 2rem;
 
     li {
       box-sizing: border-box;
       @extend .flexVerCenter;
       gap: 10px;
-      color: $textblack;
+      color: $white;
       padding: 1rem;
       border: 1px solid transparent;
       cursor: pointer;
       height: 50px;
       transition: all 0.3s;
+      position: relative;
+      @extend .flexCenter;
 
       svg {
         width: 40px;
+        fill: $white;
       }
-    }
 
-    li:hover {
-      color: $primaryblue;
-      border-bottom: 1px solid $primaryblue;
+      &:after,
+      &:before {
+        content: "";
+        position: absolute;
+        display: block;
+        border: 0px solid transparent;
+      }
 
-      svg {
-        fill: $primaryblue;
+      &:after {
+        width: 0%;
+        height: 80%;
+        border-top: 2px solid #fff;
+        border-bottom: 2px solid #fff;
+        transition: all 0.3s ease;
+      }
+
+      &:before {
+        width: 120%;
+        height: 0%;
+        border-left: 2px solid #fff;
+        border-right: 2px solid #fff;
+        transition: all 0.5s ease;
+      }
+
+      &:hover::before {
+        height: 80%;
+      }
+
+      &:hover::after {
+        width: 120%;
+      }
+
+      &:hover {
+        svg {
+          fill: $primaryblue;
+        }
       }
     }
 
@@ -83,20 +115,6 @@
 
 .exp_col_Btn {
   display: none;
-}
-
-.navbar {
-  background: linear-gradient(-45deg, $blue1, $primarygreen);
-
-  .mainList {
-    li {
-      color: $white;
-
-      svg {
-        fill: $white;
-      }
-    }
-  }
 }
 
 @media screen and (max-width: 1240px) {
@@ -181,6 +199,12 @@
     .right {
       display: flex;
       gap: 10px;
+    }
+
+    .middle {
+      h2 {
+        color: $white;
+      }
     }
   }
 }

@@ -6,8 +6,14 @@ import stl from "./Homepage.module.scss";
 const Homepage = ({ customClass }) => {
   return (
     <div className={clsx(stl.container, customClass)}>
-      <h1>Unit Converter</h1>
-      <h4>Multi Functional</h4>
+      <div className={stl.main}>
+        <h1>Unit</h1>
+        <h1>Converter</h1>
+      </div>
+      <div className={stl.slogan}>
+        <h4>Multi</h4>
+        <h4>Functional</h4>
+      </div>
     </div>
   );
 };

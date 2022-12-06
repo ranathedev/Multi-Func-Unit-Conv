@@ -16,8 +16,8 @@ const Footer = ({
   priv_po_Link,
   term_cond_Link,
   homeLink,
-  aboutLink,
   contactLink,
+  unitConvLink,
   customClass,
 }) => {
   const { width } = useWindowDimensions();
@@ -66,8 +66,8 @@ const Footer = ({
           <Link href={`${homeLink}`}>
             <h3>Home</h3>
           </Link>
-          <Link href={`${aboutLink}`}>
-            <h3>About</h3>
+          <Link href={`${unitConvLink}`}>
+            <h3>Unit Converter</h3>
           </Link>
           <Link href={`${contactLink}`}>
             <h3>Contact</h3>
@@ -81,18 +81,18 @@ const Footer = ({
 };
 
 Footer.defaultProps = {
-  priv_po_Link: "#",
-  term_cond_Link: "#",
-  homeLink: "#",
-  aboutLink: "#",
-  contactLink: "#",
+  priv_po_Link: "",
+  term_cond_Link: "",
+  homeLink: "",
+  unitConvLink: "",
+  contactLink: "",
 };
 
 Footer.propTypes = {
   priv_po_Link: PropTypes.string,
   term_cond_Link: PropTypes.string,
   homeLink: PropTypes.string,
-  aboutLink: PropTypes.string,
+  unitConvLink: PropTypes.string,
   contactLink: PropTypes.string,
   customClass: PropTypes.string,
 };
