@@ -4,7 +4,9 @@ import clsx from "clsx";
 
 import DropdownArr from "../../assets/dropdown-arr.svg";
 import Logo from "../../assets/logo.svg";
-import Icon from "../../assets/menu.svg";
+import ContactIcon from "../../assets/contact.svg";
+import HomeIcon from "../../assets/home.svg";
+import AboutIcon from "../../assets/about.svg";
 
 import useClickOnOutside from "../../lib/hooks";
 
@@ -20,18 +22,7 @@ const Navbar = ({
   mostUsedLiHandler,
   customClass,
 }) => {
-  const [isOpenCommon, setIsOpenCommon] = useState(true);
   const [isOpenEngineer, setIsOpenEngineer] = useState(true);
-  const [shortList, setShortList] = useState(false);
-
-  const close1 = () => {
-    setIsOpenCommon(true);
-    const drp1 = document.getElementById("drpdwn1");
-    drp1.style.width = "0";
-    drp1.style.padding = "0";
-    drp1.style.height = "0";
-    drp1.style.opacity = "0";
-  };
 
   const close2 = () => {
     setIsOpenEngineer(true);
@@ -42,22 +33,9 @@ const Navbar = ({
     drp2.style.opacity = "0";
   };
 
-  const base = useRef();
   const mostUsed = useRef();
 
-  useClickOnOutside(close1, base);
   useClickOnOutside(close2, mostUsed);
-
-  const showHide = () => {
-    const ele = document.getElementById("shortList");
-    if (!shortList) {
-      ele.style.display = "flex";
-      setShortList(true);
-    } else if (shortList) {
-      ele.style.display = "none";
-      setShortList(false);
-    }
-  };
 
   return (
     <div className={clsx(stl.container, stl[`${customClass}`])}>
@@ -114,24 +92,19 @@ const Navbar = ({
         </Link>
       </ul>
       <div className={stl.exp_col_Btn}>
-        <div
-          onClick={() => {
-            showHide();
-          }}
-        >
-          <Icon />
-        </div>
-        <ul id="shortList">
+        <div className={stl.left}>
           <Link href={`${homeLink}`}>
-            <li>Home</li>
+            <HomeIcon />
+          </Link>
+        </div>
+        <div className={stl.right}>
+          <Link href={`${contactLink}`}>
+            <ContactIcon />
           </Link>
           <Link href={`${aboutLink}`}>
-            <li>About</li>
+            <AboutIcon />
           </Link>
-          <Link href={`${contactLink}`}>
-            <li>Contact</li>
-          </Link>
-        </ul>
+        </div>
       </div>
     </div>
   );
