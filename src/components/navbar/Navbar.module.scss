@@ -13,6 +13,7 @@
   background: transparent;
   backdrop-filter: blur(20px);
   user-select: none;
+  z-index: 5;
 
   .mainList {
     box-sizing: border-box;
@@ -82,10 +83,6 @@
 
 .exp_col_Btn {
   display: none;
-
-  ul {
-    display: none;
-  }
 }
 
 .navbar {
@@ -155,34 +152,35 @@
     }
   }
 
+  .container {
+    height: 70px;
+  }
+
+  .mainList {
+    display: none;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+  }
+
   .exp_col_Btn {
+    height: 70px;
     display: flex;
-    position: relative;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
 
-    ul {
-      list-style: none;
-      overflow: visible;
-      position: absolute;
-      top: 70%;
-      right: -70%;
-      background: $blue;
-      width: 100vw;
-      border-radius: 10px;
-      height: 150px;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+    svg {
+      fill: $white;
 
-      li {
-        text-align: center;
-        padding: 0.7rem 0;
-        font-size: 1.3rem;
-        color: $white;
-
-        &:hover {
-          font-size: 1.5rem;
-        }
+      &:hover {
+        transform: scale(1.2);
       }
+    }
+
+    .right {
+      display: flex;
+      gap: 10px;
     }
   }
 }

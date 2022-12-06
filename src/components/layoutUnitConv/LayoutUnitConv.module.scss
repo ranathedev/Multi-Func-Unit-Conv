@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  .unit_conv {
+    margin-left: 20%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .unit_conv {
+    margin-right: 8%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .unit_conv {
+    margin-right: 20%;
+  }
+}
