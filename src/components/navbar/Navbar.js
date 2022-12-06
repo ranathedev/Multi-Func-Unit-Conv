@@ -19,23 +19,30 @@ const Navbar = ({
   contactLink,
   mostUsedList,
   unitConvLink,
-  mostUsedLiHandler,
+  liClickHandler,
   customClass,
 }) => {
-  const [isOpenEngineer, setIsOpenEngineer] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
-  const close2 = () => {
-    setIsOpenEngineer(true);
-    const drp2 = document.getElementById("drpdwn2");
-    drp2.style.width = "0";
-    drp2.style.padding = "0";
-    drp2.style.height = "0";
-    drp2.style.opacity = "0";
+  const showHide = () => {
+    const list = document.getElementById("list");
+    if (isOpen) {
+      list.style.display = "none";
+      setIsOpen(false);
+    } else {
+      list.style.display = "flex";
+      setIsOpen(true);
+    }
   };
 
-  const mostUsed = useRef();
+  const close = () => {
+    const list = document.getElementById("list");
+    list.style.display = "none";
+  };
 
-  useClickOnOutside(close2, mostUsed);
+  const ref = useRef();
+
+  useClickOnOutside(close, ref);
 
   return (
     <div className={clsx(stl.container, stl[`${customClass}`])}>
@@ -52,30 +59,20 @@ const Navbar = ({
           <li>Unit Converter</li>
         </Link>
         <li
-          ref={mostUsed}
-          id="mostUsed_conv"
-          className={stl.engineer_conv}
+          ref={ref}
+          className={stl.childList}
           onClick={() => {
-            if (isOpenEngineer) {
-              setIsOpenEngineer(!isOpenEngineer);
-              const drp2 = document.getElementById("drpdwn2");
-              drp2.style.width = "100%";
-              drp2.style.padding = "1rem";
-              drp2.style.height = "400px";
-              drp2.style.opacity = "1";
-            } else if (!isOpenEngineer) {
-              close2();
-            }
+            showHide();
           }}
         >
           Most Used Converters <DropdownArr />
-          <ul ref={mostUsed} id="drpdwn2" className={stl.drownDown}>
+          <ul ref={ref} id="list" className={stl.drownDown}>
             {mostUsedList.map((option, i) => {
               return (
                 <li
                   key={i}
                   onClick={() => {
-                    mostUsedLiHandler(option);
+                    liClickHandler(option);
                   }}
                 >
                   {option}
@@ -116,7 +113,7 @@ Navbar.defaultProps = {
   contactLink: "#",
   unitConvLink: "#",
   mostUsedList: ["Area", "Force", "Energy", "Power", "Speed", "Volume"],
-  mostUsedLiHandler: () => {
+  liClickHandler: () => {
     console.log("clicked...");
   },
 };
@@ -127,7 +124,7 @@ Navbar.propTypes = {
   contactLink: PropTypes.string,
   unitConvLink: PropTypes.string,
   mostUsedList: PropTypes.array,
-  mostUsedLiHandler: PropTypes.func,
+  liClickHandler: PropTypes.func,
   customClass: PropTypes.string,
 };
 
