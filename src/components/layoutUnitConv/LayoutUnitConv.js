@@ -21,7 +21,7 @@ const LayoutUnitConv = () => {
 
   return (
     <div className={stl.container}>
-      <Navbar customClass="navbar" />
+      <Navbar homeLink="/" aboutLink="/About" contactLink="/Contact" />
       <Sidebar liClickHandler={changeType} />
       <UnitConverter
         type={typeOfUnit.type}

@@ -4,7 +4,12 @@ import Home from "../homepage";
 const LayoutHome = () => {
   return (
     <>
-      <Navbar />
+      <Navbar
+        homeLink="/"
+        aboutLink="/About"
+        contactLink="/Contact"
+        unitConvLink="/UnitConverter"
+      />
       <Home />
     </>
   );

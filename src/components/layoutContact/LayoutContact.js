@@ -4,7 +4,7 @@ import Contact from "../contact";
 const LayoutContact = () => {
   return (
     <>
-      <Navbar customClass="navbar" />
+      <Navbar homeLink="/" aboutLink="/About" unitConvLink="/UnitConverter" />
       <Contact />
     </>
   );

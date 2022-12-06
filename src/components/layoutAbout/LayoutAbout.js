@@ -6,8 +6,16 @@ const LayoutAbout = () => {
   return (
     <>
       <About />
-      <Navbar customClass="navbar" />
-      <Footer />
+      <Navbar
+        homeLink="/"
+        contactLink="/Contact"
+        unitConvLink="/UnitConverter"
+      />
+      <Footer
+        homeLink="/"
+        contactLink="/Contact"
+        unitConvLink="/UnitConverter"
+      />
     </>
   );
 };
