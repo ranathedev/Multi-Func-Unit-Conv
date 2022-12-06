@@ -127,8 +127,9 @@ const Sidebar = ({ list, liClickHandler, customClass }) => {
           })}
         </ul>
         <ul ref={ref} id="childList" className={stl.childList}>
-          {childList[listType].map((option) => (
+          {childList[listType].map((option, i) => (
             <li
+              key={i}
               onClick={() => {
                 liClickHandler(option);
                 closeList();
