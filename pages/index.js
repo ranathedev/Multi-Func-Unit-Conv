@@ -1,9 +1,9 @@
-// import StoriesLinks from "./stories";
+import StoriesLinks from "./stories";
 // import LayoutAbout from "../src/components/layoutAbout";
 // import LayoutHome from "../src/components/layoutHome";
 // import LayoutContact from "../src/components/layoutContact";
-import LayoutUnitConv from "../src/components/layoutUnitConv";
+// import LayoutUnitConv from "../src/components/layoutUnitConv";
 
-const Home = () => <LayoutUnitConv />;
+const Home = () => <StoriesLinks />;
 
 export default Home;
