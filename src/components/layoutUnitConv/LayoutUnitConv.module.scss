@@ -1,11 +1,10 @@
 .container {
-  display: flex;
   height: 100vh;
+  display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   background: #fff;
-  height: 100%;
   margin-top: 9.5%;
 
   .unit_conv {
@@ -21,6 +20,6 @@
 
 @media screen and (max-width: 400px) {
   .unit_conv {
-    margin-right: 20%;
+    margin-right: 5%;
   }
 }
