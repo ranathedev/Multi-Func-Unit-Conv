@@ -1,13 +1,10 @@
 import PropTypes from "prop-types";
-import { useState, useRef } from "react";
 import clsx from "clsx";
 
 import Logo from "../../assets/logo.svg";
 import ContactIcon from "../../assets/contact.svg";
 import HomeIcon from "../../assets/home.svg";
 import AboutIcon from "../../assets/about.svg";
-
-import useClickOnOutside from "../../lib/hooks";
 
 import stl from "./Navbar.module.scss";
 import Link from "next/link";
@@ -17,30 +14,12 @@ const Navbar = ({
   aboutLink,
   contactLink,
   unitConvLink,
+  home,
+  about,
+  contact,
+  unitConv,
   customClass,
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const showHide = () => {
-    const list = document.getElementById("list");
-    if (isOpen) {
-      list.style.display = "none";
-      setIsOpen(false);
-    } else {
-      list.style.display = "flex";
-      setIsOpen(true);
-    }
-  };
-
-  const close = () => {
-    const list = document.getElementById("list");
-    list.style.display = "none";
-  };
-
-  const ref = useRef();
-
-  useClickOnOutside(close, ref);
-
   return (
     <div className={clsx(stl.container, customClass)}>
       <div className={stl.logo}>
@@ -50,16 +29,16 @@ const Navbar = ({
       </div>
       <ul className={clsx(stl.mainList, stl.collapse)}>
         <Link href={`${homeLink}`}>
-          <li>Home</li>
+          <li className={stl[`${home}`]}>Home</li>
         </Link>
         <Link href={`${unitConvLink}`}>
-          <li>Unit Converter</li>
+          <li className={stl[`${unitConv}`]}>Unit Converter</li>
         </Link>
         <Link href={`${aboutLink}`}>
-          <li>About</li>
+          <li className={stl[`${about}`]}>About</li>
         </Link>
         <Link href={`${contactLink}`}>
-          <li>Contact</li>
+          <li className={stl[`${contact}`]}>Contact</li>
         </Link>
       </ul>
       <div className={stl.exp_col_Btn}>
@@ -91,6 +70,10 @@ Navbar.defaultProps = {
   aboutLink: "",
   contactLink: "",
   unitConvLink: "",
+  home: "",
+  about: "",
+  contact: "",
+  unitConv: "",
 };
 
 Navbar.propTypes = {
@@ -98,6 +81,10 @@ Navbar.propTypes = {
   aboutLink: PropTypes.string,
   contactLink: PropTypes.string,
   unitConvLink: PropTypes.string,
+  home: PropTypes.string,
+  about: PropTypes.string,
+  contact: PropTypes.string,
+  unitConv: PropTypes.string,
 };
 
 export default Navbar;

@@ -9,6 +9,7 @@ const LayoutHome = () => {
         aboutLink="/About"
         contactLink="/Contact"
         unitConvLink="/UnitConverter"
+        home="active"
       />
       <Home />
     </>

@@ -146,7 +146,7 @@ const changeValue = (type) => {
     type = acceleration;
   } else if (type === "Angle") {
     type = angle;
-  } else if (type === "ApparentPower") {
+  } else if (type === "Apparent Power") {
     type = apparentPower;
   } else if (type === "Area") {
     type = area;
@@ -155,7 +155,6 @@ const changeValue = (type) => {
   } else if (type === "Current") {
     type = current;
   } else if (type === "Digital") {
-    console.log("Digital");
     type = digital;
   } else if (type === "Each") {
     type = each;
