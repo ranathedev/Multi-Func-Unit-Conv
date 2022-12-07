@@ -146,7 +146,7 @@ const changeValue = (type) => {
     type = acceleration;
   } else if (type === "Angle") {
     type = angle;
-  } else if (type === "ApparentPower") {
+  } else if (type === "Apparent Power") {
     type = apparentPower;
   } else if (type === "Area") {
     type = area;
@@ -172,8 +172,8 @@ const changeValue = (type) => {
     type = mass;
   } else if (type === "Pace") {
     type = pace;
-  } else if (type === "Part Per") {
-    type = partPer;
+  } else if (type === "Parts Per") {
+    type = partsPer;
   } else if (type === "Pieces") {
     type = pieces;
   } else if (type === "Power") {

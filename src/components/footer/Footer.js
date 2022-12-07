@@ -53,26 +53,12 @@ const Footer = ({
         </div>
       </div>
       <div className={stl.row2}>
-        <div className={stl.left}>
-          <Link href={`${priv_po_Link}`}>
-            <h3>Privacy & Policy</h3>
-          </Link>
-          <Link href={`${term_cond_Link}`}>
-            {" "}
-            <h3>Terms & Conditions</h3>
-          </Link>
-        </div>
-        <div className={stl.right}>
-          <Link href={`${homeLink}`}>
-            <h3>Home</h3>
-          </Link>
-          <Link href={`${unitConvLink}`}>
-            <h3>Unit Converter</h3>
-          </Link>
-          <Link href={`${contactLink}`}>
-            <h3>Contact</h3>
-          </Link>
-        </div>
+        <Link href={`${unitConvLink}`}>
+          <h3>Unit Converter</h3>
+        </Link>
+        <Link href={`${contactLink}`}>
+          <h3>Contact</h3>
+        </Link>
       </div>
       <div className={stl.divider}></div>
       <p>Copyright 2022. All Rights Reserved</p>

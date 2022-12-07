@@ -166,8 +166,8 @@
       font-size: 1.5rem;
       padding: 1rem 1.5rem;
       border-radius: 5px;
-      color: $primaryblue;
-      background: $white;
+      color: $white;
+      background: $primaryblue;
       font-weight: bold;
       cursor: pointer;
       transition: all 0.3s;
@@ -175,7 +175,7 @@
       &:hover {
         transform: scale(1.2);
         border-color: transparent;
-        box-shadow: 0 0 20px 8px $boxshadow;
+        box-shadow: 0 0 10px 4px $primaryblue;
       }
     }
   }

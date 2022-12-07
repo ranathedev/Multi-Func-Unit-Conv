@@ -38,19 +38,10 @@
 
   .row2 {
     @extend .flexVerCenter;
-    justify-content: space-between;
+    justify-content: flex-end;
     height: 150px;
-
-    .left,
-    .right {
-      color: $white;
-      display: flex;
-      gap: 0 3rem;
-    }
-
-    .right {
-      color: $offwhite;
-    }
+    color: $white;
+    gap: 3rem;
   }
 
   .divider {
@@ -69,14 +60,27 @@
 }
 
 @media screen and (max-width: 650px) {
+  .container {
+    height: max-content;
+    gap: 0;
+  }
+
   .row1 {
     flex-direction: column;
     justify-content: center;
-    margin: 1rem 0;
+    margin: 0;
+
+    .logo {
+      margin-top: 1rem;
+    }
   }
 
   .row2 {
-    flex-direction: column;
+    margin: 0 auto;
+  }
+
+  .divider {
+    margin-top: 0;
   }
 }
 

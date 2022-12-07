@@ -10,6 +10,7 @@ const LayoutAbout = () => {
         homeLink="/"
         contactLink="/Contact"
         unitConvLink="/UnitConverter"
+        about="active"
       />
       <Footer
         homeLink="/"
