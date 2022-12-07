@@ -155,6 +155,7 @@ const changeValue = (type) => {
   } else if (type === "Current") {
     type = current;
   } else if (type === "Digital") {
+    console.log("Digital");
     type = digital;
   } else if (type === "Each") {
     type = each;
@@ -172,8 +173,8 @@ const changeValue = (type) => {
     type = mass;
   } else if (type === "Pace") {
     type = pace;
-  } else if (type === "Part Per") {
-    type = partPer;
+  } else if (type === "Parts Per") {
+    type = partsPer;
   } else if (type === "Pieces") {
     type = pieces;
   } else if (type === "Power") {
