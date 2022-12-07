@@ -20,7 +20,6 @@ const Contact = ({ customClass }) => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    console.log("submit");
     await addDoc(collectionRef, { name, email, msg });
 
     setName("");

@@ -12,7 +12,7 @@ import stl from "./Unit-Converter.module.scss";
 
 const UnitConverter = ({ type, val, data, customClass }) => {
   const [res, setRes] = useState("");
-  const [isLoading, setIsLoading] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [outputValue, setOutputValue] = useState("");
   const [inputName, setInputName] = useState("");
@@ -24,7 +24,7 @@ const UnitConverter = ({ type, val, data, customClass }) => {
 
   const config = {
     headers: {
-      Authorization: "Bearer 373|5muD1RjjZDqrhmJk628CK0b17ky0K6SlMFnAYxkX",
+      Authorization: "Bearer 411|zmgWPDtA2DsgTnirjaR2qK0fIlze1TMWGu0MhIV2",
     },
   };
 
@@ -41,16 +41,14 @@ const UnitConverter = ({ type, val, data, customClass }) => {
         `https://zylalabs.com/api/189/measurement+unit+conversion+api/202/unit+converter?value=${value}&from=${inputVal}&to=${outputVal}&measure=${type}`,
         config
       )
-      .then(function (response) {
+      .then((response) => {
         const data = response.data.value;
         console.log(data);
         setRes(data);
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log(error);
       });
-
-    setIsLoading(false);
   };
 
   const openDropDownInput = () => {
@@ -150,7 +148,7 @@ const UnitConverter = ({ type, val, data, customClass }) => {
           <button
             type="submit"
             onClick={() => {
-              // convert(value, inputValue, outputValue, type);
+              convert(value, inputValue, outputValue, type);
             }}
             className={stl.convBtn}
           >
