@@ -150,5 +150,8 @@
   }
 }
 
-@media screen and (max-width: 330px) {
+@media screen and (max-width: 500px) {
+  .container {
+    padding: 1rem;
+  }
 }
