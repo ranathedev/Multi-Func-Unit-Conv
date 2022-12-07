@@ -1,13 +1,6 @@
 @import "../../../styles/color.module.scss";
 @import "../../../styles/common.module.scss";
 
-.test {
-  ul {
-    list-style: none;
-    cursor: pointer;
-  }
-}
-
 .container {
   box-sizing: border-box;
   height: max-content;
@@ -19,6 +12,7 @@
   justify-content: space-evenly;
   box-shadow: 0 0 20px 8px $boxshadow;
   z-index: 1;
+  font-family: sans-serif;
 
   h1 {
     color: $textblack;
@@ -189,12 +183,19 @@
 
 @media screen and (max-width: 475px) {
   .container {
-    width: 300px;
-    margin: 0%;
-    margin-right: 50vw;
+    width: max-content;
+    margin-top: 15%;
 
-    input {
-      padding: 0;
+    padding: 10px;
+    background-origin: 1px solid red;
+
+    .dataContain {
+      flex-direction: column;
+
+      .input_value,
+      .output_value {
+        width: 100%;
+      }
     }
   }
 }
