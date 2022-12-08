@@ -10,6 +10,7 @@
   padding: 0 5rem;
   @extend .flexCol;
   justify-content: center;
+  user-select: none;
 
   .row1 {
     @extend .flexVerCenter;

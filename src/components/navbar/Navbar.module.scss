@@ -13,6 +13,7 @@
   background: linear-gradient(-45deg, $blue1, $primarygreen);
   user-select: none;
   z-index: 5;
+  user-select: none;
 
   .mainList {
     box-sizing: border-box;
@@ -87,6 +88,10 @@
 
 .exp_col_Btn {
   display: none;
+}
+
+.icon {
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1240px) {

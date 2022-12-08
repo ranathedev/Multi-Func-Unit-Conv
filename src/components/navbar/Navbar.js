@@ -57,14 +57,36 @@ const Navbar = ({
       </ul>
       <div className={stl.exp_col_Btn}>
         <div className={stl.left}>
-          <HomeIcon />
+          <HomeIcon
+            onClick={() => {
+              changeComp(0);
+            }}
+            className={stl.icon}
+          />
         </div>
         <div className={stl.middle}>
-          <h2>Unit Converter</h2>
+          <h2
+            onClick={() => {
+              changeComp(1);
+            }}
+            className={stl.icon}
+          >
+            Unit Converter
+          </h2>
         </div>
         <div className={stl.right}>
-          <ContactIcon />
-          <AboutIcon />
+          <AboutIcon
+            onClick={() => {
+              changeComp(2);
+            }}
+            className={stl.icon}
+          />
+          <ContactIcon
+            onClick={() => {
+              changeComp(3);
+            }}
+            className={stl.icon}
+          />
         </div>
       </div>
     </div>
