@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-import Navbar from "../navbar";
 import Sidebar from "../sidebar";
 import UnitConverter from "../unit-converter";
 
@@ -21,12 +20,6 @@ const LayoutUnitConv = () => {
 
   return (
     <div className={stl.container}>
-      <Navbar
-        homeLink="/"
-        aboutLink="/About"
-        contactLink="/Contact"
-        unitConv="active"
-      />
       <Sidebar liClickHandler={changeType} />
       <UnitConverter
         type={typeOfUnit.type}

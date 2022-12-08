@@ -1,4 +1,3 @@
-import Navbar from "../navbar";
 import About from "../about";
 import Footer from "../footer";
 
@@ -8,12 +7,6 @@ const LayoutAbout = () => {
   return (
     <div className={stl.container}>
       <About />
-      <Navbar
-        homeLink="/"
-        contactLink="/Contact"
-        unitConvLink="/UnitConverter"
-        about="active"
-      />
       <Footer
         homeLink="/"
         contactLink="/Contact"

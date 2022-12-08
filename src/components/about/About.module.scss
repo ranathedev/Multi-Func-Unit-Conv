@@ -9,6 +9,7 @@
   top: 100px;
   @extend .flexCenter;
   overflow: scroll;
+  user-select: none;
 
   .about {
     width: 60vw;
