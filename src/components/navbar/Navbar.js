@@ -7,58 +7,64 @@ import HomeIcon from "../../assets/home.svg";
 import AboutIcon from "../../assets/about.svg";
 
 import stl from "./Navbar.module.scss";
-import Link from "next/link";
 
 const Navbar = ({
-  homeLink,
-  aboutLink,
-  contactLink,
-  unitConvLink,
   home,
   about,
   contact,
   unitConv,
+  changeComp,
   customClass,
 }) => {
   return (
     <div className={clsx(stl.container, customClass)}>
       <div className={stl.logo}>
-        <Link href={`${homeLink}`}>
-          <Logo />
-        </Link>
+        <Logo />
       </div>
       <ul className={clsx(stl.mainList, stl.collapse)}>
-        <Link href={`${homeLink}`}>
-          <li className={stl[`${home}`]}>Home</li>
-        </Link>
-        <Link href={`${unitConvLink}`}>
-          <li className={stl[`${unitConv}`]}>Unit Converter</li>
-        </Link>
-        <Link href={`${aboutLink}`}>
-          <li className={stl[`${about}`]}>About</li>
-        </Link>
-        <Link href={`${contactLink}`}>
-          <li className={stl[`${contact}`]}>Contact</li>
-        </Link>
+        <li
+          onClick={() => {
+            changeComp(0);
+          }}
+          className={stl[`${home}`]}
+        >
+          Home
+        </li>
+        <li
+          onClick={() => {
+            changeComp(1);
+          }}
+          className={stl[`${unitConv}`]}
+        >
+          Unit Converter
+        </li>
+        <li
+          onClick={() => {
+            changeComp(2);
+          }}
+          className={stl[`${about}`]}
+        >
+          About
+        </li>
+        <li
+          onClick={() => {
+            changeComp(3);
+          }}
+          className={stl[`${contact}`]}
+        >
+          Contact
+        </li>
       </ul>
       <div className={stl.exp_col_Btn}>
         <div className={stl.left}>
-          <Link href={`${homeLink}`}>
-            <HomeIcon />
-          </Link>
+          <HomeIcon />
         </div>
         <div className={stl.middle}>
-          <Link href={`${unitConvLink}`}>
-            <h2>Unit Converter</h2>
-          </Link>
+          <h2>Unit Converter</h2>
         </div>
         <div className={stl.right}>
-          <Link href={`${contactLink}`}>
-            <ContactIcon />
-          </Link>
-          <Link href={`${aboutLink}`}>
-            <AboutIcon />
-          </Link>
+          <ContactIcon />
+          <AboutIcon />
         </div>
       </div>
     </div>
@@ -66,25 +72,21 @@ const Navbar = ({
 };
 
 Navbar.defaultProps = {
-  homeLink: "",
-  aboutLink: "",
-  contactLink: "",
-  unitConvLink: "",
   home: "",
   about: "",
   contact: "",
   unitConv: "",
+  changeComp: () => {
+    console.log("Change Component");
+  },
 };
 
 Navbar.propTypes = {
-  homeLink: PropTypes.string,
-  aboutLink: PropTypes.string,
-  contactLink: PropTypes.string,
-  unitConvLink: PropTypes.string,
   home: PropTypes.string,
   about: PropTypes.string,
   contact: PropTypes.string,
   unitConv: PropTypes.string,
+  changeComp: PropTypes.func,
 };
 
 export default Navbar;
