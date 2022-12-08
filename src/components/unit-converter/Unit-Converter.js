@@ -17,6 +17,8 @@ const UnitConverter = ({ type, val, data, customClass }) => {
   const [inputName, setInputName] = useState("");
   const [outputName, setOutputName] = useState("");
   const [value, setValue] = useState(0);
+  const [Btnlabel, setBtnlabel] = useState("Convert");
+  const [isDisabled, setIsDisabled] = useState(false);
 
   const inputValueRef = useRef();
   const outputValueRef = useRef();
@@ -40,8 +42,14 @@ const UnitConverter = ({ type, val, data, customClass }) => {
     } else if (outputValue === "") {
       alert("Select Output Method");
     } else if (value === 0) {
-      alert("0");
+      alert("Enter Value Greater than 0");
     } else {
+      setBtnlabel("Calculating");
+
+      setIsDisabled(true);
+
+      setRes("");
+
       axios
         .get(
           `https://zylalabs.com/api/189/measurement+unit+conversion+api/202/unit+converter?value=${value}&from=${inputVal}&to=${outputVal}&measure=${type}`,
@@ -49,14 +57,25 @@ const UnitConverter = ({ type, val, data, customClass }) => {
         )
         .then((response) => {
           const data = response.data.value;
-          console.log(data);
           setRes(data);
         })
         .catch((error) => {
           console.log(error);
         });
     }
+
+    setTimeout(() => setBtnlabel("Convert"), 2000);
+
+    setInputValue("");
+    setInputName("Select...");
+    setOutputValue("");
+    setOutputName("Select...");
+    setValue(0);
   };
+
+  useEffect(() => {
+    setIsDisabled(false);
+  }, [res]);
 
   const openDropDownInput = () => {
     const dropMenu = document.getElementById("dropDownInput");
@@ -115,6 +134,7 @@ const UnitConverter = ({ type, val, data, customClass }) => {
             </ul>
           </div>
           <input
+            value={value}
             type="number"
             placeholder="Enter value to Convert..."
             onChange={(e) => setValue(e.target.value)}
@@ -147,18 +167,23 @@ const UnitConverter = ({ type, val, data, customClass }) => {
               })}
             </ul>
           </div>
-          <span className={stl.output}>{res}</span>
+          <span className={stl.output}>
+            {res} {outputValue}
+          </span>
         </div>
       </div>
       <div className={stl.Btn}>
         <button
+          disabled={isDisabled}
           type="submit"
           onClick={() => {
-            convert(value, inputValue, outputValue, type);
+            if (Btnlabel !== "Calculating") {
+              convert(value, inputValue, outputValue, type);
+            }
           }}
           className={stl.convBtn}
         >
-          Convert
+          {Btnlabel}
         </button>
       </div>
     </div>
