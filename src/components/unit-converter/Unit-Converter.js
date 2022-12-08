@@ -22,8 +22,6 @@ const UnitConverter = ({ type, val, data, customClass }) => {
   const inputValueRef = useRef();
   const outputValueRef = useRef();
 
-  console.log(process.env.KEY);
-
   useEffect(() => {
     setInputName(val);
     setOutputName(val);
@@ -49,7 +47,10 @@ const UnitConverter = ({ type, val, data, customClass }) => {
         method: "GET",
         url: `https://measurement-unit-converter.p.rapidapi.com/${type}`,
         params: { value: value, from: inputVal, to: outputVal },
-        headers: {},
+        headers: {
+          "X-RapidAPI-Key": process.env.XRAPIDAPIKEY,
+          "X-RapidAPI-Host": process.env.XRAPIDAPIHOST,
+        },
       };
 
       axios

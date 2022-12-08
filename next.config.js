@@ -7,7 +7,8 @@ dotenv.config();
 
 module.exports = {
   env: {
-    KEY: process.env.KEY,
+    XRAPIDAPIKEY: process.env.XRAPIDAPIKEY,
+    XRAPIDAPIHOST: process.env.XRAPIDAPIHOST,
   },
   reactStrictMode: true,
   swcMinify: true,
