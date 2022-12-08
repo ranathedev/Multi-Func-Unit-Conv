@@ -43,6 +43,10 @@
     height: 150px;
     color: $white;
     gap: 3rem;
+
+    h3 {
+      cursor: pointer;
+    }
   }
 
   .divider {

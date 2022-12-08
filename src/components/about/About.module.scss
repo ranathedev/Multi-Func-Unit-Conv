@@ -26,6 +26,19 @@
     &::-webkit-scrollbar {
       display: none;
     }
+
+    a {
+      text-decoration: underline;
+      color: $black;
+    }
+
+    span {
+      cursor: pointer;
+
+      &:hover {
+        color: $black;
+      }
+    }
   }
 }
 

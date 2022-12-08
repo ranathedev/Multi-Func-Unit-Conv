@@ -3,15 +3,11 @@ import Footer from "../footer";
 
 import stl from "./LayoutAbout.module.scss";
 
-const LayoutAbout = () => {
+const LayoutAbout = ({ changeComp }) => {
   return (
     <div className={stl.container}>
-      <About />
-      <Footer
-        homeLink="/"
-        contactLink="/Contact"
-        unitConvLink="/UnitConverter"
-      />
+      <About changeComp={changeComp} />
+      <Footer changeComp={changeComp} />
     </div>
   );
 };
