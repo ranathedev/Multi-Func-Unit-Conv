@@ -4,13 +4,13 @@
 .container {
   box-sizing: border-box;
   height: max-content;
-  background: linear-gradient(-45deg, $primaryblue, magenta);
+  background: linear-gradient(-45deg, $primaryblue, $magenta);
   border-radius: 25px;
   width: 60%;
   padding: 1rem 2rem;
   @extend .flexCol;
   justify-content: space-evenly;
-  box-shadow: 0 0 20px 8px $boxshadow;
+  box-shadow: 0 0 20px 8px $palepurple;
   z-index: 1;
   font-family: sans-serif;
   user-select: none;

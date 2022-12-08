@@ -6,6 +6,10 @@ const path = require("path");
 dotenv.config();
 
 module.exports = {
+  env: {
+    XRAPIDAPIKEY: process.env.XRAPIDAPIKEY,
+    XRAPIDAPIHOST: process.env.XRAPIDAPIHOST,
+  },
   reactStrictMode: true,
   swcMinify: true,
   images: { unoptimized: true },

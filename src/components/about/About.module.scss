@@ -4,12 +4,12 @@
 .container {
   width: 100%;
   height: calc(100vh - 400px);
-  background: $white;
   position: absolute;
   top: 100px;
   @extend .flexCenter;
   overflow: scroll;
   user-select: none;
+  background: transparent;
 
   .about {
     width: 60vw;
