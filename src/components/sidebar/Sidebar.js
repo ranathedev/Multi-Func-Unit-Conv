@@ -45,7 +45,6 @@ const Sidebar = ({ list, liClickHandler, customClass }) => {
           sidebar.style.borderRadius = "0 100px 0 0";
         } else if (width <= breakpoint5) {
           sidebar.style.width = "60vw";
-          sidebar.style.height = "90vh";
           sidebar.style.borderRadius = "0 100px 0 0";
         } else if (width > breakpoint) {
           sidebar.style.width = " 20vw";
@@ -55,12 +54,6 @@ const Sidebar = ({ list, liClickHandler, customClass }) => {
         setIsOpen(true);
       } else if (isOpen) {
         sidebar.classList.add(stl.sdbarCollapse);
-
-        if (width <= breakpoint5) {
-          sidebar.style.height = "11.5vh";
-          sidebar.style.top = "3%";
-          sidebar.style.borderRadius = "0 50px 50px 0";
-        }
 
         setIsOpen(false);
       }
