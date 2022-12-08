@@ -6,6 +6,9 @@ const path = require("path");
 dotenv.config();
 
 module.exports = {
+  env: {
+    KEY: process.env.KEY,
+  },
   reactStrictMode: true,
   swcMinify: true,
   images: { unoptimized: true },

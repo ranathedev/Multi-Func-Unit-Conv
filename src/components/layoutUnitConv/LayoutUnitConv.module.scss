@@ -1,10 +1,12 @@
+@import "../../../styles/color.module.scss";
+
 .container {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  background: #fff;
+  background: linear-gradient(-45deg, $blue1, $primarygreen);
 
   .unit_conv {
     margin-left: 20%;

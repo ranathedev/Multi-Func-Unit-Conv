@@ -3,7 +3,6 @@ import { useEffect, useState, useRef } from "react";
 import clsx from "clsx";
 import axios from "axios";
 
-import LoadingScreen from "../loaingScreen/Loading";
 import useClickOnOutside from "../../lib/hooks";
 
 import DropdownIcon from "../../assets/dropdown-arr.svg";
@@ -23,11 +22,7 @@ const UnitConverter = ({ type, val, data, customClass }) => {
   const inputValueRef = useRef();
   const outputValueRef = useRef();
 
-  const config = {
-    headers: {
-      Authorization: "Bearer 411|zmgWPDtA2DsgTnirjaR2qK0fIlze1TMWGu0MhIV2",
-    },
-  };
+  console.log(process.env.KEY);
 
   useEffect(() => {
     setInputName(val);
@@ -41,30 +36,31 @@ const UnitConverter = ({ type, val, data, customClass }) => {
       alert("Select Input Method");
     } else if (outputValue === "") {
       alert("Select Output Method");
-    } else if (value === 0) {
+    } else if (value <= 0) {
       alert("Enter Value Greater than 0");
+    } else if (value === "") {
+      alert("Enter value");
     } else {
       setBtnlabel("Calculating");
 
       setIsDisabled(true);
 
-      setRes("");
+      const options = {
+        method: "GET",
+        url: `https://measurement-unit-converter.p.rapidapi.com/${type}`,
+        params: { value: value, from: inputVal, to: outputVal },
+        headers: {},
+      };
 
       axios
-        .get(
-          `https://zylalabs.com/api/189/measurement+unit+conversion+api/202/unit+converter?value=${value}&from=${inputVal}&to=${outputVal}&measure=${type}`,
-          config
-        )
+        .request(options)
         .then((response) => {
-          const data = response.data.value;
-          setRes(data);
+          setRes(response.data.result);
         })
         .catch((error) => {
-          console.log(error);
+          console.error(error);
         });
     }
-
-    setTimeout(() => setBtnlabel("Convert"), 2000);
 
     setInputValue("");
     setInputName("Select...");
@@ -75,6 +71,7 @@ const UnitConverter = ({ type, val, data, customClass }) => {
 
   useEffect(() => {
     setIsDisabled(false);
+    setBtnlabel("Convert");
   }, [res]);
 
   const openDropDownInput = () => {
@@ -125,6 +122,7 @@ const UnitConverter = ({ type, val, data, customClass }) => {
                       closeDropDownInput();
                       setInputValue(unit.symbol);
                       setInputName(unit.name);
+                      setRes("");
                     }}
                   >
                     {unit.name} <span>({unit.symbol})</span>
@@ -137,7 +135,10 @@ const UnitConverter = ({ type, val, data, customClass }) => {
             value={value}
             type="number"
             placeholder="Enter value to Convert..."
-            onChange={(e) => setValue(e.target.value)}
+            onChange={(e) => {
+              setValue(e.target.value);
+              setRes("");
+            }}
             onFocus={(e) => removePlaceholder(e)}
           />
         </div>
@@ -159,6 +160,7 @@ const UnitConverter = ({ type, val, data, customClass }) => {
                       closeDropDownOutput();
                       setOutputValue(unit.symbol);
                       setOutputName(unit.name);
+                      setRes("");
                     }}
                   >
                     {unit.name} <span>({unit.symbol})</span>
@@ -167,9 +169,7 @@ const UnitConverter = ({ type, val, data, customClass }) => {
               })}
             </ul>
           </div>
-          <span className={stl.output}>
-            {res} {outputValue}
-          </span>
+          <span className={stl.output}>{res}</span>
         </div>
       </div>
       <div className={stl.Btn}>
