@@ -46,7 +46,20 @@ const Home = () => {
   return (
     <>
       <Head>
-        <title>Unit Converter</title>
+        <title>Multi Functional Unit Converter</title>
+        <meta
+          name="description"
+          content="Multi Functional Unit Converter. Simple and Free."
+        />
+        <meta
+          name="keywords"
+          content="Multi Functional Unit Converter, Unit Converter, Multi Func Unit Conv, Convert Unit, Unit Conv, Unit Conversion "
+        />
+        <meta name="author" content="Rana Intizar" />
+        <meta
+          name="google-site-verification"
+          content="5Fs8lSYBSQvC-anQEhvg9XrB5OLrKgO2HpvI6CoByrQ"
+        />
       </Head>
       {getComp()}
     </>
