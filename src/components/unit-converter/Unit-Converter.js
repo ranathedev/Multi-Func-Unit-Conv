@@ -9,7 +9,13 @@ import DropdownIcon from "../../assets/dropdown-arr.svg";
 
 import stl from "./Unit-Converter.module.scss";
 
-const UnitConverter = ({ type, val, data, customClass }) => {
+const UnitConverter = ({
+  type,
+  valToInput,
+  valToOutput,
+  data,
+  customClass,
+}) => {
   const [res, setRes] = useState("");
   const [inputValue, setInputValue] = useState("");
   const [outputValue, setOutputValue] = useState("");
@@ -23,8 +29,8 @@ const UnitConverter = ({ type, val, data, customClass }) => {
   const outputValueRef = useRef();
 
   useEffect(() => {
-    setInputName(val);
-    setOutputName(val);
+    setInputName(valToInput);
+    setOutputName(valToOutput);
     setInputValue("");
     setOutputValue("");
   }, [type]);
@@ -64,9 +70,9 @@ const UnitConverter = ({ type, val, data, customClass }) => {
     }
 
     setInputValue("");
-    setInputName("Select...");
+    setInputName("Select From");
     setOutputValue("");
-    setOutputName("Select...");
+    setOutputName("Select To");
     setValue(0);
   };
 
