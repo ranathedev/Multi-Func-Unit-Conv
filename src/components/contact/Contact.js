@@ -22,6 +22,8 @@ const Contact = ({ customClass }) => {
     e.preventDefault();
     await addDoc(collectionRef, { name, email, msg });
 
+    alert("Message Received.");
+
     setName("");
     setEmail("");
     setMsg("");

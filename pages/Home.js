@@ -46,14 +46,14 @@ const Home = () => {
   return (
     <>
       <Head>
-        <title>Multi Functional Unit Converter</title>
+        <title>Unit Converter | Multi Functional | Convert Units Easily</title>
         <meta
           name="description"
-          content="Multi Functional Unit Converter. Simple and Free."
+          content="Unit Converter | Multi Functional. Simple and Free. Convert Units Easily."
         />
         <meta
           name="keywords"
-          content="Multi Functional Unit Converter, Unit Converter, Multi Func Unit Conv, Convert Unit, Unit Conv, Unit Conversion "
+          content=", Unit Converter, Convert Unit, Multi Functional Unit Converter, Multi Func Unit Conv, Unit Conv, Unit Conversion"
         />
         <meta name="author" content="Rana Intizar" />
         <meta
