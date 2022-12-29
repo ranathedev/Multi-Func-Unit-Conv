@@ -23,8 +23,8 @@ const LayoutUnitConv = () => {
       <Sidebar liClickHandler={changeType} />
       <UnitConverter
         type={typeOfUnit.type}
-        valToInput="Select From"
-        valToOutput="Select To"
+        valToInput="Convert From"
+        valToOutput="Convert To"
         data={[...typeOfUnit.data]}
         customClass={stl.unit_conv}
       />

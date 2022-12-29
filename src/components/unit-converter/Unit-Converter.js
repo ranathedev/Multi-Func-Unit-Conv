@@ -70,9 +70,9 @@ const UnitConverter = ({
     }
 
     setInputValue("");
-    setInputName("Select From");
+    setInputName("Convert From");
     setOutputValue("");
-    setOutputName("Select To");
+    setOutputName("Convert To");
     setValue(0);
   };
 
