@@ -1,11 +1,11 @@
 import { useState } from "react";
 import Head from "next/head";
 
-import Navbar from "../src/components/navbar";
-import Homepage from "../src/components/layoutHome";
-import UnitConverter from "../src/components/layoutUnitConv";
-import About from "../src/components/layoutAbout";
-import Contact from "../src/components/layoutContact";
+import Navbar from "./components/navbar";
+import Homepage from "./components/layoutHome";
+import UnitConverter from "./components/layoutUnitConv";
+import About from "./components/layoutAbout";
+import Contact from "./components/layoutContact";
 
 const Home = () => {
   const [comp, setComp] = useState(0);

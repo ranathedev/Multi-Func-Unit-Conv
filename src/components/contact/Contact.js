@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import clsx from "clsx";
 
-import { db } from "../../../pages/api/firebase-config";
+import { db } from "../../../firebase-config";
 import { collection, addDoc } from "firebase/firestore";
 
 import MailIcon from "../../assets/mail.svg";
@@ -78,10 +78,7 @@ const Contact = ({ customClass }) => {
           </a>
         </div>
         <div className={stl.followBtn}>
-          <a
-            href="https://www.facebook.com/profile.php?id=100088339993655"
-            target="_blank"
-          >
+          <a href="https://www.facebook.com/ranathedev" target="_blank">
             <span>Connect us on</span>
             <div className={stl.iconContainer}>
               <FacebookIcon />
@@ -89,7 +86,7 @@ const Contact = ({ customClass }) => {
           </a>
         </div>
         <div className={stl.followBtn}>
-          <a href="https://twitter.com/intizar47426" target="_blank">
+          <a href="https://twitter.com/ranathedev" target="_blank">
             <span>Follow us on</span>
             <div className={stl.iconContainer}>
               <TwitterIcon />

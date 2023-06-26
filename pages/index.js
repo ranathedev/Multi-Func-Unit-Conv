@@ -1,4 +1,4 @@
-import Homepage from "./Home";
+import Homepage from "../src/Home";
 
 const Home = () => <Homepage />;
 
