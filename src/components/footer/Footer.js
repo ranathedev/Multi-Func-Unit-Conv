@@ -36,13 +36,10 @@ const Footer = ({ changeComp, customClass }) => {
           {flag ? <Logo /> : <Logo2 />}
         </div>
         <div className={stl.connectBtns}>
-          <a
-            href="https://www.facebook.com/profile.php?id=100088339993655"
-            target="_blank"
-          >
+          <a href="https://www.facebook.com/ranathedev" target="_blank">
             <FacebookIcon />
           </a>
-          <a href="https://twitter.com/intizar47426" target="_blank">
+          <a href="https://twitter.com/ranathedev" target="_blank">
             <TwitterIcon />
           </a>
           <a href="mailto:intizaralirana2@gmail.com">
