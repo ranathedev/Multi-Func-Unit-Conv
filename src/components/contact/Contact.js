@@ -1,33 +1,33 @@
-import PropTypes from "prop-types";
-import { useState } from "react";
-import clsx from "clsx";
+import PropTypes from 'prop-types'
+import { useState } from 'react'
+import clsx from 'clsx'
 
-import { db } from "../../../firebase-config";
-import { collection, addDoc } from "firebase/firestore";
+import { db } from '../../../firebase-config'
+import { collection, addDoc } from 'firebase/firestore'
 
-import MailIcon from "../../assets/mail.svg";
-import FacebookIcon from "../../assets/facebook.svg";
-import TwitterIcon from "../../assets/twitter.svg";
+import MailIcon from '../../assets/mail.svg'
+import FacebookIcon from '../../assets/facebook.svg'
+import TwitterIcon from '../../assets/twitter.svg'
 
-import stl from "./Contact.module.scss";
+import stl from './Contact.module.scss'
 
 const Contact = ({ customClass }) => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [msg, setMsg] = useState("");
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [msg, setMsg] = useState('')
 
-  const collectionRef = collection(db, "messages");
+  const collectionRef = collection(db, 'messages')
 
-  const submitHandler = async (e) => {
-    e.preventDefault();
-    await addDoc(collectionRef, { name, email, msg });
+  const submitHandler = async e => {
+    e.preventDefault()
+    await addDoc(collectionRef, { name, email, msg })
 
-    alert("Message Received.");
+    alert('Message Received.')
 
-    setName("");
-    setEmail("");
-    setMsg("");
-  };
+    setName('')
+    setEmail('')
+    setMsg('')
+  }
 
   return (
     <div className={clsx(stl.container, customClass)}>
@@ -39,8 +39,8 @@ const Contact = ({ customClass }) => {
           placeholder="John Doe"
           required
           value={name}
-          onChange={(e) => {
-            setName(e.target.value);
+          onChange={e => {
+            setName(e.target.value)
           }}
         />
         <label>Your Email</label>
@@ -49,8 +49,8 @@ const Contact = ({ customClass }) => {
           placeholder="johndoe@example.com"
           required
           value={email}
-          onChange={(e) => {
-            setEmail(e.target.value);
+          onChange={e => {
+            setEmail(e.target.value)
           }}
         />
         <label>Your Message</label>
@@ -58,10 +58,10 @@ const Contact = ({ customClass }) => {
           placeholder="Please make it short and meaningful."
           required
           value={msg}
-          onChange={(e) => {
-            setMsg(e.target.value);
+          onChange={e => {
+            setMsg(e.target.value)
           }}
-        ></textarea>
+        />
         <input type="submit" value="Send" />
       </form>
       <div className={stl.divider}></div>
@@ -78,7 +78,7 @@ const Contact = ({ customClass }) => {
           </a>
         </div>
         <div className={stl.followBtn}>
-          <a href="https://www.facebook.com/ranathedev" target="_blank">
+          <a href="https://linkzar.fly.dev/facebook" target="_blank">
             <span>Connect us on</span>
             <div className={stl.iconContainer}>
               <FacebookIcon />
@@ -86,7 +86,7 @@ const Contact = ({ customClass }) => {
           </a>
         </div>
         <div className={stl.followBtn}>
-          <a href="https://twitter.com/ranathedev" target="_blank">
+          <a href="https://linkzar.fly.dev/twitter" target="_blank">
             <span>Follow us on</span>
             <div className={stl.iconContainer}>
               <TwitterIcon />
@@ -95,11 +95,11 @@ const Contact = ({ customClass }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 Contact.propTypes = {
   customClass: PropTypes.string,
-};
+}
 
-export default Contact;
+export default Contact
