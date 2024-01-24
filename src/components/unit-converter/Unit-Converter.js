@@ -50,7 +50,7 @@ const UnitConverter = ({
       setIsDisabled(true)
 
       axios
-        .post('https://proxar.fly.dev/api/unit-converter', {
+        .post('https://proxar.vercel.app/api/unit-converter', {
           type,
           value,
           inputVal,
