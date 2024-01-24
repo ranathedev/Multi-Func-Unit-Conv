@@ -1,12 +1,12 @@
-import PropTypes from "prop-types";
-import clsx from "clsx";
+import PropTypes from 'prop-types'
+import clsx from 'clsx'
 
-import Logo from "../../assets/logo.svg";
-import ContactIcon from "../../assets/contact.svg";
-import HomeIcon from "../../assets/home.svg";
-import AboutIcon from "../../assets/about.svg";
+import Logo from '../../assets/logo.svg'
+import ContactIcon from '../../assets/contact.svg'
+import HomeIcon from '../../assets/home.svg'
+import AboutIcon from '../../assets/about.svg'
 
-import stl from "./Navbar.module.scss";
+import stl from './Navbar.module.scss'
 
 const Navbar = ({
   home,
@@ -21,10 +21,10 @@ const Navbar = ({
       <div className={stl.logo}>
         <Logo />
       </div>
-      <ul className={clsx(stl.mainList, stl.collapse)}>
+      <ul data-cy="navbar" className={clsx(stl.mainList, stl.collapse)}>
         <li
           onClick={() => {
-            changeComp(0);
+            changeComp(0)
           }}
           className={stl[`${home}`]}
         >
@@ -32,7 +32,7 @@ const Navbar = ({
         </li>
         <li
           onClick={() => {
-            changeComp(1);
+            changeComp(1)
           }}
           className={stl[`${unitConv}`]}
         >
@@ -40,7 +40,7 @@ const Navbar = ({
         </li>
         <li
           onClick={() => {
-            changeComp(2);
+            changeComp(2)
           }}
           className={stl[`${about}`]}
         >
@@ -48,7 +48,7 @@ const Navbar = ({
         </li>
         <li
           onClick={() => {
-            changeComp(3);
+            changeComp(3)
           }}
           className={stl[`${contact}`]}
         >
@@ -59,7 +59,7 @@ const Navbar = ({
         <div className={stl.left}>
           <HomeIcon
             onClick={() => {
-              changeComp(0);
+              changeComp(0)
             }}
             className={stl.icon}
           />
@@ -67,7 +67,7 @@ const Navbar = ({
         <div className={stl.middle}>
           <h2
             onClick={() => {
-              changeComp(1);
+              changeComp(1)
             }}
             className={stl.icon}
           >
@@ -77,31 +77,31 @@ const Navbar = ({
         <div className={stl.right}>
           <AboutIcon
             onClick={() => {
-              changeComp(2);
+              changeComp(2)
             }}
             className={stl.icon}
           />
           <ContactIcon
             onClick={() => {
-              changeComp(3);
+              changeComp(3)
             }}
             className={stl.icon}
           />
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 Navbar.defaultProps = {
-  home: "",
-  about: "",
-  contact: "",
-  unitConv: "",
+  home: '',
+  about: '',
+  contact: '',
+  unitConv: '',
   changeComp: () => {
-    console.log("Change Component");
+    console.log('Change Component')
   },
-};
+}
 
 Navbar.propTypes = {
   home: PropTypes.string,
@@ -109,6 +109,6 @@ Navbar.propTypes = {
   contact: PropTypes.string,
   unitConv: PropTypes.string,
   changeComp: PropTypes.func,
-};
+}
 
-export default Navbar;
+export default Navbar
