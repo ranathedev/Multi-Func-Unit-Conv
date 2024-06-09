@@ -78,7 +78,7 @@ const Contact = ({ customClass }) => {
           </a>
         </div>
         <div className={stl.followBtn}>
-          <a href="https://linkzar.fly.dev/facebook" target="_blank">
+          <a href="https://proxar.ranaintizar.com/me/facebook" target="_blank">
             <span>Connect us on</span>
             <div className={stl.iconContainer}>
               <FacebookIcon />
@@ -86,7 +86,7 @@ const Contact = ({ customClass }) => {
           </a>
         </div>
         <div className={stl.followBtn}>
-          <a href="https://linkzar.fly.dev/twitter" target="_blank">
+          <a href="https://proxar.ranaintizar.com/me/twitter" target="_blank">
             <span>Follow us on</span>
             <div className={stl.iconContainer}>
               <TwitterIcon />

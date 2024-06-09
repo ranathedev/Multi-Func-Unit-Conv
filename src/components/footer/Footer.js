@@ -36,10 +36,10 @@ const Footer = ({ changeComp, customClass }) => {
           {flag ? <Logo /> : <Logo2 />}
         </div>
         <div className={stl.connectBtns}>
-          <a href="https://linkzar.fly.dev/facebook" target="_blank">
+          <a href="https://proxar.ranaintizar.com/me/facebook" target="_blank">
             <FacebookIcon />
           </a>
-          <a href="https://linkzar.fly.dev/twitter" target="_blank">
+          <a href="https://proxar.ranaintizar.com/me/twitter" target="_blank">
             <TwitterIcon />
           </a>
           <a href="mailto:intizaralirana2@gmail.com">

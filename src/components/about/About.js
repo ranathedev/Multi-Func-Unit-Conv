@@ -11,7 +11,7 @@ const About = ({ changeComp, customClass }) => {
           Unit Converter is a free, multi-functional unit converter webapp. It
           can convert 50+ units of measurement. Unit Converter was created in
           2022 by{' '}
-          <a href="https://linkzar.fly.dev/linktree" target="_blank">
+          <a href="https://proxar.ranaintizar.com/me/linktree" target="_blank">
             @ranaintizar
           </a>
           , a web developer who was tired of having to use multiple converters
