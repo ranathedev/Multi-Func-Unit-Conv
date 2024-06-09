@@ -1,13 +1,13 @@
-import PropTypes from "prop-types";
-import { useEffect, useState, useRef } from "react";
-import clsx from "clsx";
-import axios from "axios";
+import PropTypes from 'prop-types'
+import { useEffect, useState, useRef } from 'react'
+import clsx from 'clsx'
+import axios from 'axios'
 
-import useClickOnOutside from "../../lib/hooks";
+import useClickOnOutside from '../../lib/hooks'
 
-import DropdownIcon from "../../assets/dropdown-arr.svg";
+import DropdownIcon from '../../assets/dropdown-arr.svg'
 
-import stl from "./Unit-Converter.module.scss";
+import stl from './Unit-Converter.module.scss'
 
 const UnitConverter = ({
   type,
@@ -16,96 +16,88 @@ const UnitConverter = ({
   data,
   customClass,
 }) => {
-  const [res, setRes] = useState("");
-  const [inputValue, setInputValue] = useState("");
-  const [outputValue, setOutputValue] = useState("");
-  const [inputName, setInputName] = useState("");
-  const [outputName, setOutputName] = useState("");
-  const [value, setValue] = useState(0);
-  const [Btnlabel, setBtnlabel] = useState("Convert");
-  const [isDisabled, setIsDisabled] = useState(false);
+  const [res, setRes] = useState('')
+  const [inputValue, setInputValue] = useState('')
+  const [outputValue, setOutputValue] = useState('')
+  const [inputName, setInputName] = useState('')
+  const [outputName, setOutputName] = useState('')
+  const [value, setValue] = useState(0)
+  const [Btnlabel, setBtnlabel] = useState('Convert')
+  const [isDisabled, setIsDisabled] = useState(false)
 
-  const inputValueRef = useRef();
-  const outputValueRef = useRef();
+  const inputValueRef = useRef()
+  const outputValueRef = useRef()
 
   useEffect(() => {
-    setInputName(valToInput);
-    setOutputName(valToOutput);
-    setInputValue("");
-    setOutputValue("");
-  }, [type]);
+    setInputName(valToInput)
+    setOutputName(valToOutput)
+    setInputValue('')
+    setOutputValue('')
+  }, [type])
 
   const convert = (value, inputVal, outputVal, type) => {
-    if (inputValue === "") {
-      alert("Select Input Method");
-    } else if (outputValue === "") {
-      alert("Select Output Method");
+    if (inputValue === '') {
+      alert('Select Input Method')
+    } else if (outputValue === '') {
+      alert('Select Output Method')
     } else if (value <= 0) {
-      alert("Enter Value Greater than 0");
-    } else if (value === "") {
-      alert("Enter value");
+      alert('Enter Value Greater than 0')
+    } else if (value === '') {
+      alert('Enter value')
     } else {
-      setBtnlabel("Calculating");
+      setBtnlabel('Calculating')
 
-      setIsDisabled(true);
-
-      const options = {
-        method: "GET",
-        url: `https://measurement-unit-converter.p.rapidapi.com/${type}`,
-        params: { value: value, from: inputVal, to: outputVal },
-        headers: {
-          "X-RapidAPI-Key": process.env.XRAPIDAPIKEY,
-          "X-RapidAPI-Host": process.env.XRAPIDAPIHOST,
-        },
-      };
+      setIsDisabled(true)
 
       axios
-        .request(options)
-        .then((response) => {
-          setRes(response.data.result);
+        .post('https://proxar.ranaintizar.com/api/unit-converter', {
+          type,
+          value,
+          inputVal,
+          outputVal,
         })
-        .catch((error) => {
-          console.error(error);
-        });
+        .then(response => {
+          setRes(response.data.result)
+        })
     }
 
-    setInputValue("");
-    setInputName("Convert From");
-    setOutputValue("");
-    setOutputName("Convert To");
-    setValue(0);
-  };
+    setInputValue('')
+    setInputName('Convert From')
+    setOutputValue('')
+    setOutputName('Convert To')
+    setValue(0)
+  }
 
   useEffect(() => {
-    setIsDisabled(false);
-    setBtnlabel("Convert");
-  }, [res]);
+    setIsDisabled(false)
+    setBtnlabel('Convert')
+  }, [res])
 
   const openDropDownInput = () => {
-    const dropMenu = document.getElementById("dropDownInput");
-    dropMenu.style.display = "flex";
-  };
+    const dropMenu = document.getElementById('dropDownInput')
+    dropMenu.style.display = 'flex'
+  }
 
   const openDropDownOutput = () => {
-    const dropMenu = document.getElementById("dropDownOutput");
-    dropMenu.style.display = "flex";
-  };
+    const dropMenu = document.getElementById('dropDownOutput')
+    dropMenu.style.display = 'flex'
+  }
 
   const closeDropDownInput = () => {
-    const dropMenu = document.getElementById("dropDownInput");
-    dropMenu.style.display = "none";
-  };
+    const dropMenu = document.getElementById('dropDownInput')
+    dropMenu.style.display = 'none'
+  }
   const closeDropDownOutput = () => {
-    const dropMenu = document.getElementById("dropDownOutput");
-    dropMenu.style.display = "none";
-  };
+    const dropMenu = document.getElementById('dropDownOutput')
+    dropMenu.style.display = 'none'
+  }
 
-  const removePlaceholder = (e) => {
-    e.target.placeholder = "";
-  };
+  const removePlaceholder = e => {
+    e.target.placeholder = ''
+  }
 
-  useClickOnOutside(closeDropDownInput, inputValueRef);
-  useClickOnOutside(closeDropDownOutput, outputValueRef);
+  useClickOnOutside(closeDropDownInput, inputValueRef)
+  useClickOnOutside(closeDropDownOutput, outputValueRef)
 
   return (
     <div className={clsx(stl.container, customClass)}>
@@ -126,15 +118,15 @@ const UnitConverter = ({
                   <li
                     key={i}
                     onClick={() => {
-                      closeDropDownInput();
-                      setInputValue(unit.symbol);
-                      setInputName(unit.name);
-                      setRes("");
+                      closeDropDownInput()
+                      setInputValue(unit.symbol)
+                      setInputName(unit.name)
+                      setRes('')
                     }}
                   >
                     {unit.name} <span>({unit.symbol})</span>
                   </li>
-                );
+                )
               })}
             </ul>
           </div>
@@ -142,11 +134,11 @@ const UnitConverter = ({
             value={value}
             type="number"
             placeholder="Enter value to Convert..."
-            onChange={(e) => {
-              setValue(e.target.value);
-              setRes("");
+            onChange={e => {
+              setValue(e.target.value)
+              setRes('')
             }}
-            onFocus={(e) => removePlaceholder(e)}
+            onFocus={e => removePlaceholder(e)}
           />
         </div>
         <div className={stl.output_value}>
@@ -164,15 +156,15 @@ const UnitConverter = ({
                   <li
                     key={i}
                     onClick={() => {
-                      closeDropDownOutput();
-                      setOutputValue(unit.symbol);
-                      setOutputName(unit.name);
-                      setRes("");
+                      closeDropDownOutput()
+                      setOutputValue(unit.symbol)
+                      setOutputName(unit.name)
+                      setRes('')
                     }}
                   >
                     {unit.name} <span>({unit.symbol})</span>
                   </li>
-                );
+                )
               })}
             </ul>
           </div>
@@ -184,8 +176,8 @@ const UnitConverter = ({
           disabled={isDisabled}
           type="submit"
           onClick={() => {
-            if (Btnlabel !== "Calculating") {
-              convert(value, inputValue, outputValue, type);
+            if (Btnlabel !== 'Calculating') {
+              convert(value, inputValue, outputValue, type)
             }
           }}
           className={stl.convBtn}
@@ -194,13 +186,13 @@ const UnitConverter = ({
         </button>
       </div>
     </div>
-  );
-};
+  )
+}
 
 UnitConverter.propTypes = {
   type: PropTypes.string,
   data: PropTypes.array,
   val: PropTypes.string,
-};
+}
 
-export default UnitConverter;
+export default UnitConverter
