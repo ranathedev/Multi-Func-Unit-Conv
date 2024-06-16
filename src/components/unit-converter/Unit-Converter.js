@@ -50,12 +50,20 @@ const UnitConverter = ({
       setIsDisabled(true)
 
       axios
-        .post('https://proxar.ranaintizar.com/api/unit-converter', {
-          type,
-          value,
-          inputVal,
-          outputVal,
-        })
+        .post(
+          'https://proxar.ranaintizar.com/api/unit-converter',
+          {
+            type,
+            value,
+            inputVal,
+            outputVal,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${process.env.AUTH_TOKEN}`,
+            },
+          }
+        )
         .then(response => {
           setRes(response.data.result)
         })
