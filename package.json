@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prebuild": "mv pages/stories stories",
+    "postbuild": "mv stories pages/stories",
     "dev": "next dev",
     "build": "next build && next export",
     "start": "next start",
