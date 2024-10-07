@@ -1,23 +1,22 @@
-import PropTypes from 'prop-types'
-import clsx from 'clsx'
+import PropTypes from "prop-types"
+import clsx from "clsx"
 
-import useWindowDimensions from '../../components/usewindowdimensions'
+import useWindowDimensions from "../../components/usewindowdimensions"
 
-import Logo from '../../assets/logo-footer.svg'
-import Logo2 from '../../assets/logo-footer2.svg'
-import FacebookIcon from '../../assets/facebook-footer.svg'
-import TwitterIcon from '../../assets/twitter-footer.svg'
-import EmailIcon from '../../assets/mail-footer.svg'
+import Logo from "../../assets/logo-footer.svg"
+import Logo2 from "../../assets/logo-footer2.svg"
+import FacebookIcon from "../../assets/facebook-footer.svg"
+import TwitterIcon from "../../assets/twitter-footer.svg"
+import EmailIcon from "../../assets/mail-footer.svg"
 
-import stl from './Footer.module.scss'
-import Link from 'next/link'
+import stl from "./Footer.module.scss"
 
 const Footer = ({ changeComp, customClass }) => {
   const { width } = useWindowDimensions()
 
   let flag = true
 
-  if (typeof window !== 'undefined') {
+  if (typeof window !== "undefined") {
     const breakpoint = 340
     if (width <= breakpoint) {
       flag = false
@@ -48,20 +47,8 @@ const Footer = ({ changeComp, customClass }) => {
         </div>
       </div>
       <div className={stl.row2}>
-        <h3
-          onClick={() => {
-            changeComp(1)
-          }}
-        >
-          Unit Converter
-        </h3>
-        <h3
-          onClick={() => {
-            changeComp(3)
-          }}
-        >
-          Contact
-        </h3>
+        <h3 onClick={() => changeComp(1)}>Unit Converter</h3>
+        <h3 onClick={() => changeComp(3)}>Contact</h3>
       </div>
       <div className={stl.divider}></div>
       <p>Copyright 2022. All Rights Reserved</p>
@@ -71,7 +58,7 @@ const Footer = ({ changeComp, customClass }) => {
 
 Footer.defaultProps = {
   changeComp: () => {
-    console.log('changeComp')
+    console.log("Change Component")
   },
 }
 

@@ -1,13 +1,13 @@
-import PropTypes from 'prop-types'
-import { useEffect, useState, useRef } from 'react'
-import clsx from 'clsx'
-import axios from 'axios'
+import PropTypes from "prop-types"
+import { useEffect, useState, useRef } from "react"
+import clsx from "clsx"
+import axios from "axios"
 
-import useClickOnOutside from '../../lib/hooks'
+import useClickOnOutside from "../../lib/hooks"
 
-import DropdownIcon from '../../assets/dropdown-arr.svg'
+import DropdownIcon from "../../assets/dropdown-arr.svg"
 
-import stl from './Unit-Converter.module.scss'
+import stl from "./Unit-Converter.module.scss"
 
 const UnitConverter = ({
   type,
@@ -16,13 +16,13 @@ const UnitConverter = ({
   data,
   customClass,
 }) => {
-  const [res, setRes] = useState('')
-  const [inputValue, setInputValue] = useState('')
-  const [outputValue, setOutputValue] = useState('')
-  const [inputName, setInputName] = useState('')
-  const [outputName, setOutputName] = useState('')
+  const [res, setRes] = useState("")
+  const [inputValue, setInputValue] = useState("")
+  const [outputValue, setOutputValue] = useState("")
+  const [inputName, setInputName] = useState("")
+  const [outputName, setOutputName] = useState("")
   const [value, setValue] = useState(0)
-  const [Btnlabel, setBtnlabel] = useState('Convert')
+  const [Btnlabel, setBtnlabel] = useState("Convert")
   const [isDisabled, setIsDisabled] = useState(false)
 
   const inputValueRef = useRef()
@@ -31,27 +31,23 @@ const UnitConverter = ({
   useEffect(() => {
     setInputName(valToInput)
     setOutputName(valToOutput)
-    setInputValue('')
-    setOutputValue('')
+    setInputValue("")
+    setOutputValue("")
   }, [type])
 
-  const convert = (value, inputVal, outputVal, type) => {
-    if (inputValue === '') {
-      alert('Select Input Method')
-    } else if (outputValue === '') {
-      alert('Select Output Method')
-    } else if (value <= 0) {
-      alert('Enter Value Greater than 0')
-    } else if (value === '') {
-      alert('Enter value')
-    } else {
-      setBtnlabel('Calculating')
+  const convert = async (value, inputVal, outputVal, type) => {
+    if (inputValue === "") alert("Select Input Method")
+    else if (outputValue === "") alert("Select Output Method")
+    else if (value <= 0) alert("Enter Value Greater than 0")
+    else if (value === "") alert("Enter value")
+    else {
+      setBtnlabel("Calculating")
 
       setIsDisabled(true)
 
-      axios
+      await axios
         .post(
-          'https://proxar.ranaintizar.com/api/unit-converter',
+          "https://proxar.ranaintizar.com/api/unit-converter",
           {
             type,
             value,
@@ -67,41 +63,45 @@ const UnitConverter = ({
         .then(response => {
           setRes(response.data.result)
         })
+        .catch(() => {
+          alert("OOPs!\nTechnical issue occurred.")
+          setRes("")
+        })
     }
 
-    setInputValue('')
-    setInputName('Convert From')
-    setOutputValue('')
-    setOutputName('Convert To')
+    setInputValue("")
+    setInputName("Convert From")
+    setOutputValue("")
+    setOutputName("Convert To")
     setValue(0)
   }
 
   useEffect(() => {
     setIsDisabled(false)
-    setBtnlabel('Convert')
+    setBtnlabel("Convert")
   }, [res])
 
   const openDropDownInput = () => {
-    const dropMenu = document.getElementById('dropDownInput')
-    dropMenu.style.display = 'flex'
+    const dropMenu = document.getElementById("dropDownInput")
+    dropMenu.style.display = "flex"
   }
 
   const openDropDownOutput = () => {
-    const dropMenu = document.getElementById('dropDownOutput')
-    dropMenu.style.display = 'flex'
+    const dropMenu = document.getElementById("dropDownOutput")
+    dropMenu.style.display = "flex"
   }
 
   const closeDropDownInput = () => {
-    const dropMenu = document.getElementById('dropDownInput')
-    dropMenu.style.display = 'none'
+    const dropMenu = document.getElementById("dropDownInput")
+    dropMenu.style.display = "none"
   }
   const closeDropDownOutput = () => {
-    const dropMenu = document.getElementById('dropDownOutput')
-    dropMenu.style.display = 'none'
+    const dropMenu = document.getElementById("dropDownOutput")
+    dropMenu.style.display = "none"
   }
 
   const removePlaceholder = e => {
-    e.target.placeholder = ''
+    e.target.placeholder = ""
   }
 
   useClickOnOutside(closeDropDownInput, inputValueRef)
@@ -129,7 +129,7 @@ const UnitConverter = ({
                       closeDropDownInput()
                       setInputValue(unit.symbol)
                       setInputName(unit.name)
-                      setRes('')
+                      setRes("")
                     }}
                   >
                     {unit.name} <span>({unit.symbol})</span>
@@ -144,7 +144,7 @@ const UnitConverter = ({
             placeholder="Enter value to Convert..."
             onChange={e => {
               setValue(e.target.value)
-              setRes('')
+              setRes("")
             }}
             onFocus={e => removePlaceholder(e)}
           />
@@ -167,7 +167,7 @@ const UnitConverter = ({
                       closeDropDownOutput()
                       setOutputValue(unit.symbol)
                       setOutputName(unit.name)
-                      setRes('')
+                      setRes("")
                     }}
                   >
                     {unit.name} <span>({unit.symbol})</span>
@@ -183,12 +183,11 @@ const UnitConverter = ({
         <button
           disabled={isDisabled}
           type="submit"
-          onClick={() => {
-            if (Btnlabel !== 'Calculating') {
-              convert(value, inputValue, outputValue, type)
-            }
-          }}
           className={stl.convBtn}
+          onClick={() =>
+            Btnlabel !== "Calculating" &&
+            convert(value, inputValue, outputValue, type)
+          }
         >
           {Btnlabel}
         </button>
